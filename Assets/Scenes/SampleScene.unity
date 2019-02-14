@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  bigBomb: {fileID: 75360727171360462, guid: 97ac360d33560a045a70fe617916c129, type: 3}
+  bigBomb: {fileID: 9148845786626415860, guid: 97ac360d33560a045a70fe617916c129, type: 3}
   cooldownBigBomb: 2
 --- !u!136 &19986097
 CapsuleCollider:

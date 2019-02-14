@@ -22,8 +22,9 @@ public class BigBomb : MonoBehaviour
     void Update()
     {
         timeActive += Time.deltaTime;
-        if (timeActive >= lifetime && !exploded)
+        if (timeActive >= lifetime && !exploded) {
             Explode();
+		}
     }
 
     private void Explode()
@@ -36,6 +37,8 @@ public class BigBomb : MonoBehaviour
             Rigidbody rb = hit.GetComponent<Rigidbody>();
             if (rb)
             {
+				Vector3 dot = Vector3.dot(transform.position, rb.position);
+				rb.AddForce()
                 rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, explosionUpForce, ForceMode.Impulse);
             }
         }
