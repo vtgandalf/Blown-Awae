@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class BigBomb : MonoBehaviour
@@ -15,7 +14,8 @@ public class BigBomb : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Projector projector = GetComponentInChildren<Projector>();
+        projector.orthographicSize = explosionRadius;
     }
 
     // Update is called once per frame

@@ -5,17 +5,28 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 1f;
+    public GameObject bigBomb;
+    public float cooldownBigBomb = 2f;
+    private float cooldownTimerBigBomb;
 
     private Rigidbody rb;
     
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        cooldownTimerBigBomb = cooldownBigBomb;
     }
     
     void FixedUpdate()
     {
         Move();
+
+        if (Input.GetKeyDown("space") && cooldownTimerBigBomb >= cooldownBigBomb)
+        {
+            Instantiate(bigBomb, transform.position, transform.rotation);
+            cooldownTimerBigBomb = 0f;
+        }
+        cooldownTimerBigBomb += Time.fixedDeltaTime;
     }
 
     void Move()
