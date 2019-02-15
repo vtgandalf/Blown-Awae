@@ -3,43 +3,37 @@ using UnityEngine;
 
 public class BigBomb : MonoBehaviour
 {
-    public float lifetime = 3f;
+    public BombData data;
     private float timeActive = 0f;
-    public float explosionRadius = 2f;
-    public float explosionForce = 10f;
-    public float explosionUpForce = 1f;
-
-    private bool exploded = false;
 
     // Start is called before the first frame update
     void Start()
     {
         Projector projector = GetComponentInChildren<Projector>();
-        projector.orthographicSize = explosionRadius;
+        projector.orthographicSize = data.radius;
     }
 
     // Update is called once per frame
     void Update()
     {
         timeActive += Time.deltaTime;
-        if (timeActive >= lifetime && !exploded) {
+        if (timeActive >= data.lifetime) {
             Explode();
 		}
     }
 
     private void Explode()
     {
-        exploded = true;
-
-        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, data.radius);
         foreach (Collider hit in colliders)
         {
             Rigidbody rb = hit.GetComponent<Rigidbody>();
             if (rb)
             {
-				Vector3 dot = Vector3.dot(transform.position, rb.position);
-				rb.AddForce()
-                rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, explosionUpForce, ForceMode.Impulse);
+                Vector3 difference = rb.position - transform.position;
+                difference.y = data.upForce;
+				Vector3 direction = Vector3.Normalize(difference);
+                rb.velocity = direction * data.force;
             }
         }
 
