@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public GameObject throwingBomb;
     private float cooldownTimerBigBomb;
     private float cooldownTimerThrowingBomb;
+    private bool hasMoved = false;
 
     void Start()
     {
@@ -35,9 +36,9 @@ public class PlayerController : MonoBehaviour
         if (CollisionWithTheGround())
         {
             if (RayCastDown(rayLength)) Move();
-            else
+            else 
             {
-                transform.position = prevPosition;
+                if(hasMoved) transform.position = prevPosition;
             }
         }
 
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
+        Debug.Log("in Move()");
         float horizontal = input.GetHorizontal();
         float vertical = input.GetVertical();
 
@@ -71,12 +73,21 @@ public class PlayerController : MonoBehaviour
         {
             rb.MovePosition(rb.position + (movement * speed * Time.fixedDeltaTime));
             transform.forward = movement;
+            if(hasMoved == false) 
+            {
+                hasMoved = true;
+                Debug.Log("has moved = true");
+            }
+            else 
+            {
+                //Debug.Log("has moved = wtf");
+            }
         }
     }
 
     bool RayCastDown(float rayLenght)
     {
-        if (Physics.Raycast(transform.position, downVector, rayLenght))
+        if (Physics.Raycast(transform.position, downVector))
         {
             prevPosition = transform.position;
             return true;
@@ -93,7 +104,10 @@ public class PlayerController : MonoBehaviour
         {
             return true;
         }
-        else return false;
+        else 
+        {
+            return false;
+        }
     }
 
     private void UpdateVectors()
