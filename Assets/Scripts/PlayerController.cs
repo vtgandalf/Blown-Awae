@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
                 transform.position = prevPosition;
             }
         }
-        Move();
+        //Move();
 
         if (Input.GetKeyDown(input.throwingBomb) && cooldownTimerThrowingBomb >= cooldownThrowingBomb)
         {
