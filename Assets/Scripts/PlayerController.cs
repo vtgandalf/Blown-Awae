@@ -4,49 +4,43 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public int rayLength = 1;
+    public float rayLength = 5f;
     public float speed = 1f;
-
-    private Vector3 downVector;
-    private Vector3 prevPosition;
+    
     private Rigidbody rb;
-    Collider childCollider;
-    public Collider groundCollider;
-
     public BombSettings bombSettings;
     public KeyboardInput input;
     public GameObject bigBomb;
     public GameObject throwingBomb;
     private float cooldownTimerBigBomb;
     private float cooldownTimerThrowingBomb;
+    private float throwCharge = 0f;
+    private bool canMove = true;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         cooldownTimerBigBomb = bombSettings.cooldownBigBomb;
         cooldownTimerThrowingBomb = bombSettings.cooldownThrowingBomb;
-        childCollider = transform.GetChild(0).GetComponent<Collider>();
-        if (childCollider == null) Debug.Log("could not get collider");
     }
 
     void FixedUpdate()
     {
-        UpdateVectors();
-        if (CollisionWithTheGround())
+        Move();
+
+        if (Input.GetKey(input.throwingBomb) && throwCharge < bombSettings.maxCharge && cooldownTimerThrowingBomb >= bombSettings.cooldownThrowingBomb)
         {
-            if (RayCastDown(rayLength)) Move();
-            else
-            {
-                transform.position = prevPosition;
-            }
+            throwCharge += Time.fixedDeltaTime * bombSettings.chargeRate;
+            throwCharge = Mathf.Min(throwCharge, bombSettings.maxCharge);
+            Debug.Log(throwCharge);
         }
-
-        if (Input.GetKeyDown(input.throwingBomb) && cooldownTimerThrowingBomb >= bombSettings.cooldownThrowingBomb)
+        if (Input.GetKeyUp(input.throwingBomb) && cooldownTimerThrowingBomb >= bombSettings.cooldownThrowingBomb)
         {
-            GameObject tBombObj = Instantiate(throwingBomb, transform.position + transform.forward.normalized, transform.rotation);
-            Vector3 direction = transform.forward.normalized + new Vector3(0, bombSettings.throwUpForce, 0);
-            tBombObj.GetComponent<Rigidbody>().velocity = direction * bombSettings.throwForce;
+            GameObject tBombObj = Instantiate(throwingBomb, transform.position + transform.forward, transform.rotation);
+            Vector3 direction = transform.forward + new Vector3(0, bombSettings.throwUpForce, 0);
+            tBombObj.GetComponent<Rigidbody>().velocity = direction * (bombSettings.throwForce + throwCharge);
 
+            throwCharge = 0f;
             cooldownTimerThrowingBomb = 0f;
 
             ThrowingBomb tBomb = tBombObj.GetComponent<ThrowingBomb>();
@@ -54,7 +48,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(input.bigBomb) && cooldownTimerBigBomb >= bombSettings.cooldownBigBomb)
         {
-            Instantiate(bigBomb, transform.position + transform.forward.normalized, transform.rotation);
+            Instantiate(bigBomb, transform.position + transform.forward, transform.rotation);
             cooldownTimerBigBomb = 0f;
         }
         cooldownTimerThrowingBomb += Time.fixedDeltaTime;
@@ -67,37 +61,26 @@ public class PlayerController : MonoBehaviour
         float vertical = input.GetVertical();
 
         Vector3 movement = new Vector3(horizontal, 0f, vertical);
+        Vector3 nextPos = rb.position + (movement * speed * Time.fixedDeltaTime);
         if (movement != Vector3.zero)
         {
-            rb.MovePosition(rb.position + (movement * speed * Time.fixedDeltaTime));
             transform.forward = movement;
+            if (canMove && Physics.Raycast(nextPos, Vector3.down))
+            {
+                rb.MovePosition(nextPos);
+            }
         }
     }
 
-    bool RayCastDown(float rayLenght)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (Physics.Raycast(transform.position, downVector, rayLenght))
-        {
-            prevPosition = transform.position;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        if (collision.gameObject.layer == 9)
+            canMove = true;
     }
 
-    bool CollisionWithTheGround()
+    private void OnCollisionExit(Collision collision)
     {
-        if (childCollider.bounds.Intersects(groundCollider.bounds))
-        {
-            return true;
-        }
-        else return false;
-    }
-
-    private void UpdateVectors()
-    {
-        downVector = transform.TransformDirection(Vector3.down);
+        if (collision.gameObject.layer == 9)
+            canMove = false;
     }
 }
