@@ -4,34 +4,28 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public int rayLenght = 1;
+    public int rayLength = 1;
     public float speed = 1f;
 
     private Vector3 downVector;
-    private Vector3 position;
     private Vector3 prevPosition;
     private Rigidbody rb;
     Collider childCollider;
     public Collider groundCollider;
 
+    public BombSettings bombSettings;
+    public KeyboardInput input;
     public GameObject bigBomb;
     public GameObject throwingBomb;
-    public float cooldownBigBomb = 2f;
     private float cooldownTimerBigBomb;
-    public float cooldownThrowingBomb = 1f;
     private float cooldownTimerThrowingBomb;
-    public float throwForce = 1f;
-    public float throwUpForce = 0f;
-    private bool movementEnabled = true;
-
-    public KeyboardInput input;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        cooldownTimerBigBomb = cooldownBigBomb;
-        cooldownTimerThrowingBomb = cooldownThrowingBomb;
-        childCollider = this.transform.GetChild(0).GetComponent<Collider>();
+        cooldownTimerBigBomb = bombSettings.cooldownBigBomb;
+        cooldownTimerThrowingBomb = bombSettings.cooldownThrowingBomb;
+        childCollider = transform.GetChild(0).GetComponent<Collider>();
         if (childCollider == null) Debug.Log("could not get collider");
     }
 
@@ -40,22 +34,25 @@ public class PlayerController : MonoBehaviour
         UpdateVectors();
         if (CollisionWithTheGround())
         {
-            if (RayCastDown(rayLenght)) Move();
+            if (RayCastDown(rayLength)) Move();
             else
             {
                 transform.position = prevPosition;
             }
         }
-        Move();
 
-        if (Input.GetKeyDown(input.throwingBomb) && cooldownTimerThrowingBomb >= cooldownThrowingBomb)
+        if (Input.GetKeyDown(input.throwingBomb) && cooldownTimerThrowingBomb >= bombSettings.cooldownThrowingBomb)
         {
-            GameObject tBomb = Instantiate(throwingBomb, transform.position + transform.forward.normalized, transform.rotation);
-            Vector3 direction = (transform.forward.normalized + new Vector3(0, throwUpForce, 0));
-            tBomb.GetComponent<Rigidbody>().velocity = direction * throwForce;
+            GameObject tBombObj = Instantiate(throwingBomb, transform.position + transform.forward.normalized, transform.rotation);
+            Vector3 direction = transform.forward.normalized + new Vector3(0, bombSettings.throwUpForce, 0);
+            tBombObj.GetComponent<Rigidbody>().velocity = direction * bombSettings.throwForce;
+
             cooldownTimerThrowingBomb = 0f;
+
+            ThrowingBomb tBomb = tBombObj.GetComponent<ThrowingBomb>();
+            tBomb.Owner = gameObject;
         }
-        if (Input.GetKeyDown(input.bigBomb) && cooldownTimerBigBomb >= cooldownBigBomb)
+        if (Input.GetKeyDown(input.bigBomb) && cooldownTimerBigBomb >= bombSettings.cooldownBigBomb)
         {
             Instantiate(bigBomb, transform.position + transform.forward.normalized, transform.rotation);
             cooldownTimerBigBomb = 0f;
@@ -72,8 +69,7 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(horizontal, 0f, vertical);
         if (movement != Vector3.zero)
         {
-            if (movementEnabled)
-                rb.MovePosition(rb.position + (movement * speed * Time.fixedDeltaTime));
+            rb.MovePosition(rb.position + (movement * speed * Time.fixedDeltaTime));
             transform.forward = movement;
         }
     }
@@ -95,36 +91,13 @@ public class PlayerController : MonoBehaviour
     {
         if (childCollider.bounds.Intersects(groundCollider.bounds))
         {
-            Debug.Log("Over the ground");
             return true;
         }
-        else
-        {
-            Debug.Log("Not over the ground");
-            return false;
-        }
+        else return false;
     }
 
     private void UpdateVectors()
     {
-        position = transform.position;
-        downVector = this.transform.TransformDirection(Vector3.down);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.layer == 9)
-        {
-            movementEnabled = true;
-            rb.velocity = Vector3.zero;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.layer == 9)
-        {
-            movementEnabled = false;
-        }
+        downVector = transform.TransformDirection(Vector3.down);
     }
 }
