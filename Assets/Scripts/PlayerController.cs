@@ -57,7 +57,6 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        Debug.Log("in Move()");
         float horizontal = input.GetHorizontal();
         float vertical = input.GetVertical();
 
