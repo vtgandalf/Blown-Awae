@@ -9,4 +9,6 @@ public class BombData : ScriptableObject
     public float radius;
     public float force;
     public float upForce;
+
+    public GameObject explosionEffect;
 }

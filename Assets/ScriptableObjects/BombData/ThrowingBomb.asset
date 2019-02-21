@@ -16,3 +16,5 @@ MonoBehaviour:
   radius: 1
   force: 5
   upForce: 0.2
+  explosionEffect: {fileID: 7610260110356494282, guid: 804d7b2d690284c43b43c6c32313242a,
+    type: 3}

@@ -15,6 +15,6 @@ MonoBehaviour:
   cooldownBigBomb: 2
   cooldownThrowingBomb: 0.5
   throwForce: 10
-  throwUpForce: 0.2
+  throwUpForce: -0.1
   chargeRate: 20
   maxCharge: 10

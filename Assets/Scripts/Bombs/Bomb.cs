@@ -31,6 +31,9 @@ public class Bomb : MonoBehaviour
 
     protected virtual void Explode()
     {
+        GameObject effect = Instantiate(data.explosionEffect, transform.position, transform.rotation);
+        Destroy(effect, 1f);
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, data.radius);
         foreach (Collider hit in colliders)
         {
