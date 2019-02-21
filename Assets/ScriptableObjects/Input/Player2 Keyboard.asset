@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac392e1a6c8e33439017583842ed7ac, type: 3}
   m_Name: Player2 Keyboard
   m_EditorClassIdentifier: 
-  up: 0
-  left: 0
-  down: 0
-  right: 0
-  bigBomb: 0
-  throwingBomb: 0
+  up: 273
+  left: 276
+  down: 274
+  right: 275
+  bigBomb: 44
+  throwingBomb: 46
