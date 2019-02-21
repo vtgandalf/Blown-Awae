@@ -6,51 +6,86 @@ public class PlayerController : MonoBehaviour
 {
     public int rayLenght = 1;
     public float speed = 1f;
+
     private Vector3 downVector;
     private Vector3 position;
     private Vector3 prevPosition;
     private Rigidbody rb;
     Collider childCollider;
     public Collider groundCollider;
+
+    public GameObject bigBomb;
+    public GameObject throwingBomb;
+    public float cooldownBigBomb = 2f;
+    private float cooldownTimerBigBomb;
+    public float cooldownThrowingBomb = 1f;
+    private float cooldownTimerThrowingBomb;
+    public float throwForce = 1f;
+    public float throwUpForce = 0f;
+    private bool movementEnabled = true;
+
+    public KeyboardInput input;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        cooldownTimerBigBomb = cooldownBigBomb;
+        cooldownTimerThrowingBomb = cooldownThrowingBomb;
         childCollider = this.transform.GetChild(0).GetComponent<Collider>();
         if (childCollider == null) Debug.Log("could not get collider");
     }
-    
+
     void FixedUpdate()
     {
         UpdateVectors();
-        if(CollisionWithTheGround()){
-            if(RayCastDown(rayLenght)) Move();
-            else{
+        if (CollisionWithTheGround())
+        {
+            if (RayCastDown(rayLenght)) Move();
+            else
+            {
                 transform.position = prevPosition;
             }
         }
+        Move();
+
+        if (Input.GetKeyDown(input.throwingBomb) && cooldownTimerThrowingBomb >= cooldownThrowingBomb)
+        {
+            GameObject tBomb = Instantiate(throwingBomb, transform.position + transform.forward.normalized, transform.rotation);
+            Vector3 direction = (transform.forward.normalized + new Vector3(0, throwUpForce, 0));
+            tBomb.GetComponent<Rigidbody>().velocity = direction * throwForce;
+            cooldownTimerThrowingBomb = 0f;
+        }
+        if (Input.GetKeyDown(input.bigBomb) && cooldownTimerBigBomb >= cooldownBigBomb)
+        {
+            Instantiate(bigBomb, transform.position + transform.forward.normalized, transform.rotation);
+            cooldownTimerBigBomb = 0f;
+        }
+        cooldownTimerThrowingBomb += Time.fixedDeltaTime;
+        cooldownTimerBigBomb += Time.fixedDeltaTime;
     }
 
     void Move()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontal = input.GetHorizontal();
+        float vertical = input.GetVertical();
 
         Vector3 movement = new Vector3(horizontal, 0f, vertical);
         if (movement != Vector3.zero)
         {
-            rb.MovePosition(rb.position + (movement * speed * Time.fixedDeltaTime));
+            if (movementEnabled)
+                rb.MovePosition(rb.position + (movement * speed * Time.fixedDeltaTime));
             transform.forward = movement;
         }
     }
 
     bool RayCastDown(float rayLenght)
     {
-        if(Physics.Raycast(transform.position, downVector, rayLenght)) 
+        if (Physics.Raycast(transform.position, downVector, rayLenght))
         {
             prevPosition = transform.position;
             return true;
         }
-        else 
+        else
         {
             return false;
         }
@@ -74,5 +109,22 @@ public class PlayerController : MonoBehaviour
     {
         position = transform.position;
         downVector = this.transform.TransformDirection(Vector3.down);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == 9)
+        {
+            movementEnabled = true;
+            rb.velocity = Vector3.zero;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.layer == 9)
+        {
+            movementEnabled = false;
+        }
     }
 }
