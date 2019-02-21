@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bomb Settings
   m_EditorClassIdentifier: 
   cooldownBigBomb: 2
-  cooldownThrowingBomb: 0.5
+  cooldownThrowingBomb: 1
   throwForce: 10
   throwUpForce: -0.1
   chargeRate: 20
