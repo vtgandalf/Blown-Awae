@@ -1,28 +1,35 @@
-﻿using System;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class BigBomb : MonoBehaviour
+public class Bomb : MonoBehaviour
 {
     public BombData data;
     private float timeActive = 0f;
+    public GameObject Owner { get; set; }
 
     // Start is called before the first frame update
     void Start()
     {
         Projector projector = GetComponentInChildren<Projector>();
-        projector.orthographicSize = data.radius;
+        if (projector)
+        {
+            projector.orthographicSize = data.radius;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         timeActive += Time.deltaTime;
-        if (timeActive >= data.lifetime) {
+        if (timeActive >= data.lifetime)
+        {
             Explode();
-		}
+        }
     }
 
-    private void Explode()
+
+    protected virtual void Explode()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, data.radius);
         foreach (Collider hit in colliders)
@@ -32,8 +39,8 @@ public class BigBomb : MonoBehaviour
             {
                 Vector3 difference = rb.position - transform.position;
                 difference.y = data.upForce;
-				Vector3 direction = Vector3.Normalize(difference);
-                rb.velocity = direction * data.force;
+                Vector3 direction = Vector3.Normalize(difference);
+                rb.AddForce(direction * data.force, ForceMode.VelocityChange);
             }
         }
 
