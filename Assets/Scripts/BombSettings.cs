@@ -7,4 +7,5 @@ public class BombSettings : ScriptableObject
 {
     public float cooldownBigBomb, cooldownThrowingBomb;
     public float throwForce, throwUpForce;
+    public float chargeRate, maxCharge;
 }
