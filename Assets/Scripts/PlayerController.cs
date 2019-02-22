@@ -71,16 +71,4 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.layer == 9)
-            canMove = true;
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.layer == 9)
-            canMove = false;
-    }
 }
