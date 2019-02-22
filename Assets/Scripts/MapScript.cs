@@ -5,6 +5,7 @@ using UnityEngine;
 public class MapScript : MonoBehaviour
 {
     private List<GameObject> childrenTilesList;
+    public bool ShouldShrink {get; set;}
     private int tileIndex = 0;
     private float timer = 0f;
     public float tilesDelay = 1f;
@@ -13,19 +14,22 @@ public class MapScript : MonoBehaviour
     {
         childrenTilesList = new List<GameObject>();
         FillTilesList();
-        Debug.Log(childrenTilesList.Count);
+        ShouldShrink = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(timer > tilesDelay)
+        if(ShouldShrink)
         {
-            TileFall(tileIndex);
-            tileIndex++;
-            timer = 0f;
+            if(timer > tilesDelay)
+            {
+                TileFall(tileIndex);
+                tileIndex++;
+                timer = 0f;
+            }   
+            timer += Time.deltaTime;
         }
-        timer += Time.deltaTime;
     }
 
     private void FillTilesList()
