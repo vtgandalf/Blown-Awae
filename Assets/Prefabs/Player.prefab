@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 7424967432635188275}
   - component: {fileID: 7424967432635188270}
   - component: {fileID: 7424967432635188274}
+  - component: {fileID: 3306382840522358555}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -262,8 +263,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayLength: 1
   speed: 5
+  playerColor: {r: 0, g: 0, b: 0, a: 0}
   bombSettings: {fileID: 11400000, guid: dce00341e9cd01047b7c86ce2d59565f, type: 2}
   input: {fileID: 11400000, guid: d60dcf12c19dc2d429d0281590cb2acb, type: 2}
   bigBomb: {fileID: 9148845786626415860, guid: 97ac360d33560a045a70fe617916c129, type: 3}
   throwingBomb: {fileID: 5131327274873033715, guid: 54aa18b8959e7a546a7c524cc556de7c,
     type: 3}
+--- !u!114 &3306382840522358555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7424967432635188264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca4e4b3157175645be06a9cdd3e3794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoringSystem: {fileID: 0}

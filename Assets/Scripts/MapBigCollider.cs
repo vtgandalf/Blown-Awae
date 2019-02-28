@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class MapBigCollider : MonoBehaviour
 {
+    public ScoreScript scoringSystem;
     private void OnTriggerExit(Collider other) {
+        if(other.gameObject.GetComponent<PlayerController>()!=null) scoringSystem.UpdatePlayerList(other.gameObject);
         other.gameObject.SetActive(false);
-        if(other.gameObject.GetComponent<Player>()!=null)
-        {
-            Debug.Log("player has died!");
-        }
     }
 }

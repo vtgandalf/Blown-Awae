@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ScoreScript : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> listOfPlayers;
+    private List<GameObject> listOfPlayers;
     // Start is called before the first frame update
-    void Start()
+    void Awake ()
     {
         listOfPlayers = new List<GameObject>();
     }
@@ -24,6 +24,29 @@ public class ScoreScript : MonoBehaviour
 
     public void UpdatePlayerList(GameObject obj)
     {
-        listOfPlayers.Remove(obj);   
+        listOfPlayers.Remove(obj);
+        CheckList();
+    }
+
+    private void CheckList()
+    {
+        Debug.Log(listOfPlayers.Count);
+        if(listOfPlayers.Count < 0)
+        {
+            // to be done
+        }
+        else if (listOfPlayers.Count == 1)
+        {
+            
+        }
+        else
+        {
+            EveryBodyLoses();
+
+        }
+    }
+    private void EveryBodyLoses()
+    {
+        Debug.Log("everybody loses");
     }
 }
