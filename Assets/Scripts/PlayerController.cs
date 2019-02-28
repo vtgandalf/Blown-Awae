@@ -19,10 +19,10 @@ public class PlayerController : MonoBehaviour
     private float throwCharge = 0f;
     private bool canMove = true;
 
-    private void OnValidate()
+    /*private void OnValidate()
     {
         GetComponent<Renderer>().sharedMaterial.color = playerColor;
-    }
+    }*/
 
     void Start()
     {
