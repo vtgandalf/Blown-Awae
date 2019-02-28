@@ -9,7 +9,7 @@ public class Bomb : MonoBehaviour
     public GameObject Owner { get; set; }
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         Projector projector = GetComponentInChildren<Projector>();
         if (projector)
@@ -37,13 +37,14 @@ public class Bomb : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, data.radius);
         foreach (Collider hit in colliders)
         {
-            Rigidbody rb = hit.GetComponent<Rigidbody>();
-            if (rb)
+            BombInteractable bi = hit.GetComponent<BombInteractable>();
+            if (bi)
             {
-                Vector3 difference = rb.position - transform.position;
+                Vector3 difference = bi.transform.position - transform.position;
                 difference.y = data.upForce;
                 Vector3 direction = Vector3.Normalize(difference);
-                rb.AddForce(direction * data.force, ForceMode.VelocityChange);
+                
+                bi.Explode(direction, data.force);
             }
         }
 
