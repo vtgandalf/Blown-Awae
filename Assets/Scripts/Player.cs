@@ -18,10 +18,6 @@ public class Player : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
         bombInteractable = GetComponent<BombInteractable>();
-    }
-
-    private void OnValidate()
-    {
         GetComponent<Renderer>().material.color = playerColor;
     }
 
