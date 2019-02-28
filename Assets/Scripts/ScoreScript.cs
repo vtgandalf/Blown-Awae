@@ -31,22 +31,27 @@ public class ScoreScript : MonoBehaviour
     private void CheckList()
     {
         Debug.Log(listOfPlayers.Count);
-        if(listOfPlayers.Count < 0)
+        if(listOfPlayers.Count > 1)
         {
-            // to be done
+            // there are more than one player still playing
         }
         else if (listOfPlayers.Count == 1)
         {
-            
+            // there is a winner
+            WeHaveAWinner(listOfPlayers[0]);
         }
         else
         {
             EveryBodyLoses();
-
         }
     }
     private void EveryBodyLoses()
     {
         Debug.Log("everybody loses");
+    }
+
+    private void WeHaveAWinner(GameObject obj)
+    {
+        Debug.Log("we have a winner:"+obj);
     }
 }

@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         {
             throwCharge += Time.fixedDeltaTime * bombSettings.chargeRate;
             throwCharge = Mathf.Min(throwCharge, bombSettings.maxCharge);
-            Debug.Log(throwCharge);
+            //Debug.Log(throwCharge);
         }
         if (Input.GetKeyUp(input.throwingBomb) && cooldownTimerThrowingBomb >= bombSettings.cooldownThrowingBomb)
         {
