@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         CapsuleCollider capCol = GetComponent<CapsuleCollider>();
         distToGround = capCol.height / 2 + capCol.radius;
+        distToGround = capCol.bounds.extents.y;
         cooldownTimerBigBomb = bombSettings.cooldownBigBomb;
         cooldownTimerThrowingBomb = bombSettings.cooldownThrowingBomb;
     }
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = new Vector3(horizontal, 0f, vertical);
         // Calculates the next position the player is going to be next frame
-        Vector3 nextPos = rb.position + (movement * speed * Time.fixedDeltaTime);
+        Vector3 nextPos = rb.position + (movement.normalized * speed * Time.fixedDeltaTime);
         if (movement != Vector3.zero)
         {
             transform.forward = movement;
@@ -87,12 +88,9 @@ public class PlayerController : MonoBehaviour
     private bool IsGrounded(Vector3 startPos)
     {
         // Checks if there is ground under the player based on the given position
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, distToGround + 0.05f))
+        if (Physics.Raycast(startPos, Vector3.down, out RaycastHit hit, distToGround + 0.01f))
         {
-            if (hit.transform.gameObject.layer == 9)
-            {
-                return true;
-            }
+            return true;
         }
         return false;
     }

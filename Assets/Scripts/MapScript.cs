@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapScript : MonoBehaviour
 {
-    private List<GameObject> childrenTilesList;
+    private List<Tile> tiles;
     public bool ShouldShrink {get; set;}
     private int tileIndex = 0;
     private float timer = 0f;
@@ -12,7 +12,7 @@ public class MapScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        childrenTilesList = new List<GameObject>();
+        tiles = new List<Tile>();
         FillTilesList();
         ShouldShrink = false;
     }
@@ -24,9 +24,13 @@ public class MapScript : MonoBehaviour
         {
             if(timer > tilesDelay)
             {
-                TileFall(tileIndex);
-                tileIndex++;
-                timer = 0f;
+                if (tileIndex < tiles.Count)
+                {
+                    TileFall(tileIndex);
+                    tileIndex++;
+                    timer = 0f;
+                }
+                else ShouldShrink = false;
             }   
             timer += Time.deltaTime;
         }
@@ -37,13 +41,12 @@ public class MapScript : MonoBehaviour
         int children = transform.childCount;
         for (int i = 0; i < children; ++i)
         {
-            childrenTilesList.Add(transform.GetChild(i).gameObject);
+            tiles.Add(transform.GetChild(i).GetComponent<Tile>());
         }
     }
 
     public void TileFall(int index)
     {
-        childrenTilesList[index].transform.GetComponent<Rigidbody>().isKinematic = false;
-        childrenTilesList[index].transform.GetComponent<TileScript>().HasFallen = true;
+        tiles[index].Fall();
     }
 }
