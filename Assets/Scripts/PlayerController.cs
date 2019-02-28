@@ -4,29 +4,26 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private Player player;
+
     public float rayLength = 5f;
     public float speed = 1f;
-    public Color playerColor;
 
     public BombSettings bombSettings;
     public KeyboardInput input;
-    public GameObject bigBomb;
-    public GameObject throwingBomb;
 
     private Rigidbody rb;
+    private float distToGround;
     private float cooldownTimerBigBomb;
     private float cooldownTimerThrowingBomb;
     private float throwCharge = 0f;
-    private bool canMove = true;
-
-    /*private void OnValidate()
-    {
-        GetComponent<Renderer>().sharedMaterial.color = playerColor;
-    }*/
 
     void Start()
     {
+        player = GetComponent<Player>();
         rb = GetComponent<Rigidbody>();
+        CapsuleCollider capCol = GetComponent<CapsuleCollider>();
+        distToGround = capCol.height / 2 + capCol.radius;
         cooldownTimerBigBomb = bombSettings.cooldownBigBomb;
         cooldownTimerThrowingBomb = bombSettings.cooldownThrowingBomb;
     }
@@ -43,39 +40,60 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyUp(input.throwingBomb) && cooldownTimerThrowingBomb >= bombSettings.cooldownThrowingBomb)
         {
-            GameObject tBombObj = Instantiate(throwingBomb, transform.position + transform.forward, transform.rotation);
-            Vector3 direction = transform.forward + new Vector3(0, bombSettings.throwUpForce, 0);
-            tBombObj.GetComponent<Rigidbody>().velocity = direction * (bombSettings.throwForce + throwCharge);
+            ThrowingBomb bomb = Instantiate(player.throwingBomb, transform.position + transform.forward, transform.rotation) as ThrowingBomb;
+            bomb.Throw(bombSettings.throwForce + throwCharge, bombSettings.throwUpForce);
 
             throwCharge = 0f;
             cooldownTimerThrowingBomb = 0f;
 
-            ThrowingBomb tBomb = tBombObj.GetComponent<ThrowingBomb>();
-            tBomb.Owner = gameObject;
+            bomb.Owner = gameObject;
         }
         if (Input.GetKeyDown(input.bigBomb) && cooldownTimerBigBomb >= bombSettings.cooldownBigBomb)
         {
-            Instantiate(bigBomb, transform.position + transform.forward, transform.rotation);
+            Bomb bomb = Instantiate(player.bigBomb, transform.position + transform.forward, transform.rotation);
+
             cooldownTimerBigBomb = 0f;
+
+            bomb.Owner = gameObject;
         }
         cooldownTimerThrowingBomb += Time.fixedDeltaTime;
         cooldownTimerBigBomb += Time.fixedDeltaTime;
     }
 
-    void Move()
+    private void Move()
     {
         float horizontal = input.GetHorizontal();
         float vertical = input.GetVertical();
 
         Vector3 movement = new Vector3(horizontal, 0f, vertical);
+        // Calculates the next position the player is going to be next frame
         Vector3 nextPos = rb.position + (movement * speed * Time.fixedDeltaTime);
         if (movement != Vector3.zero)
         {
             transform.forward = movement;
-            if (canMove && Physics.Raycast(nextPos, Vector3.down))
+            if (CanMove(nextPos))
             {
+                rb.velocity = Vector3.zero;
                 rb.MovePosition(nextPos);
             }
         }
+    }
+
+    private bool CanMove(Vector3 nextPos)
+    {
+        return IsGrounded(transform.position) && IsGrounded(nextPos);
+    }
+
+    private bool IsGrounded(Vector3 startPos)
+    {
+        // Checks if there is ground under the player based on the given position
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, distToGround + 0.05f))
+        {
+            if (hit.transform.gameObject.layer == 9)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
