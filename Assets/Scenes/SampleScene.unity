@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -166,7 +166,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dbe5350d525cb964886cc8da9ebc8781, type: 2}
+  - {fileID: 2100000, guid: 433d72ebb721249468ef858bd81cc151, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -224,6 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayLength: 1
   speed: 5
+  playerColor: {r: 0.05918035, g: 0.4811321, b: 0, a: 0}
   bombSettings: {fileID: 11400000, guid: dce00341e9cd01047b7c86ce2d59565f, type: 2}
   input: {fileID: 11400000, guid: d60dcf12c19dc2d429d0281590cb2acb, type: 2}
   bigBomb: {fileID: 9148845786626415860, guid: 97ac360d33560a045a70fe617916c129, type: 3}
@@ -1475,7 +1476,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0f3b1da7638dea540be0baeb9b0f0ac2, type: 2}
+  - {fileID: 2100000, guid: 20305a1ee2b5d4142b8ce16740c4f5cf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

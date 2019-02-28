@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b013d67c6e0fe364db0c12f4ea646900, type: 3}
   m_Name: ThrowingBomb
   m_EditorClassIdentifier: 
-  lifetime: 5
+  lifetime: 3
   radius: 1
   force: 5
   upForce: 0.2
+  explosionEffect: {fileID: 7610260110356494282, guid: 804d7b2d690284c43b43c6c32313242a,
+    type: 3}

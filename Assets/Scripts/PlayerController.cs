@@ -6,16 +6,23 @@ public class PlayerController : MonoBehaviour
 {
     public float rayLength = 5f;
     public float speed = 1f;
-    
-    private Rigidbody rb;
+    public Color playerColor;
+
     public BombSettings bombSettings;
     public KeyboardInput input;
     public GameObject bigBomb;
     public GameObject throwingBomb;
+
+    private Rigidbody rb;
     private float cooldownTimerBigBomb;
     private float cooldownTimerThrowingBomb;
     private float throwCharge = 0f;
     private bool canMove = true;
+
+    private void OnValidate()
+    {
+        GetComponent<Renderer>().sharedMaterial.color = playerColor;
+    }
 
     void Start()
     {
