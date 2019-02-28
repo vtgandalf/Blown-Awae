@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 7282822446719121979}
   - component: {fileID: 7282822446719121959}
   - component: {fileID: 3064426368813405594}
+  - component: {fileID: 5799140852631141202}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -204,7 +205,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayLength: 1
   speed: 5
-  playerColor: {r: 0, g: 0, b: 0, a: 0}
   bombSettings: {fileID: 11400000, guid: dce00341e9cd01047b7c86ce2d59565f, type: 2}
   input: {fileID: 11400000, guid: d60dcf12c19dc2d429d0281590cb2acb, type: 2}
 --- !u!114 &3064426368813405594
@@ -220,6 +220,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 0
+--- !u!114 &5799140852631141202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7282822446719121981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca4e4b3157175645be06a9cdd3e3794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoringSystem: {fileID: 0}
 --- !u!1 &7282822447015993427
 GameObject:
   m_ObjectHideFlags: 0
