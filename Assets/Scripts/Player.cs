@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
     private void OnValidate()
     {
-        GetComponent<Renderer>().sharedMaterial.color = playerColor;
+        GetComponent<Renderer>().material.color = playerColor;
     }
 
     public void AddSpeed(float speed)
