@@ -15,10 +15,11 @@ public class TileScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(HasFallen)
+        //not needed anymore
+        /*if(HasFallen)
         {
                 Destroy(this.gameObject, delay);
-        }
+        }*/
         
     }
 }
