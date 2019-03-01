@@ -15,16 +15,24 @@ public class ThrowingBomb : Bomb
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 9)
+        BombInteractable bi = collision.gameObject.GetComponent<BombInteractable>();
+        if (bi != null && bi.type == InteractableType.GROUND)
         {
             bounces++;
             if (bounces >= 3)
             {
                 Explode();
             }
-        } else if (collision.gameObject != Owner)
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        BombInteractable bi = other.gameObject.GetComponent<BombInteractable>();
+        if (bi != null && bi.type != InteractableType.GROUND)
         {
-            Explode();
+            if (bi.GetComponent<Player>() != Owner)
+                Explode();
         }
     }
 }

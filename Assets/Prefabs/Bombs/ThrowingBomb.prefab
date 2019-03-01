@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 7779585090774594336}
   - component: {fileID: 2550000163166325720}
   - component: {fileID: 1154237213081784306}
+  - component: {fileID: 3252811427890488377}
   - component: {fileID: 8665077598375323569}
   m_Layer: 11
   m_Name: ThrowingBomb
@@ -123,6 +124,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.01
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &3252811427890488377
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5131327274873033715}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.02
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8665077598375323569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 533db3ca51cc64a45958ff3b65603982, type: 2}
+  bombEffect: {fileID: 0}
 --- !u!1001 &3298828526581460524
 PrefabInstance:
   m_ObjectHideFlags: 0

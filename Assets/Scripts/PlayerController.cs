@@ -13,7 +13,11 @@ public class PlayerController : MonoBehaviour
     public KeyboardInput input;
 
     private Rigidbody rb;
+    private PhysicMaterial physicMaterial;
     private float distToGround;
+
+    private int touchingSlipperyTiles = 0;
+
     private float cooldownTimerBigBomb;
     private float cooldownTimerThrowingBomb;
     private float throwCharge = 0f;
@@ -23,7 +27,7 @@ public class PlayerController : MonoBehaviour
         player = GetComponent<Player>();
         rb = GetComponent<Rigidbody>();
         CapsuleCollider capCol = GetComponent<CapsuleCollider>();
-        distToGround = capCol.height / 2 + capCol.radius;
+        physicMaterial = capCol.material;
         distToGround = capCol.bounds.extents.y;
         cooldownTimerBigBomb = bombSettings.cooldownBigBomb;
         cooldownTimerThrowingBomb = bombSettings.cooldownThrowingBomb;
@@ -42,23 +46,34 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(input.throwingBomb) && cooldownTimerThrowingBomb >= bombSettings.cooldownThrowingBomb)
         {
             ThrowingBomb bomb = Instantiate(player.throwingBomb, transform.position + transform.forward, transform.rotation) as ThrowingBomb;
+            ApplyBombEffect(bomb);
             bomb.Throw(bombSettings.throwForce + throwCharge, bombSettings.throwUpForce);
 
             throwCharge = 0f;
             cooldownTimerThrowingBomb = 0f;
 
-            bomb.Owner = gameObject;
+            bomb.Owner = player;
         }
         if (Input.GetKeyDown(input.bigBomb) && cooldownTimerBigBomb >= bombSettings.cooldownBigBomb)
         {
             Bomb bomb = Instantiate(player.bigBomb, transform.position + transform.forward, transform.rotation);
+            ApplyBombEffect(bomb);
 
             cooldownTimerBigBomb = 0f;
 
-            bomb.Owner = gameObject;
+            bomb.Owner = player;
         }
         cooldownTimerThrowingBomb += Time.fixedDeltaTime;
         cooldownTimerBigBomb += Time.fixedDeltaTime;
+    }
+
+    private void ApplyBombEffect(Bomb bomb)
+    {
+        if (player.bombEffect != null)
+        {
+            bomb.bombEffect = player.bombEffect;
+            player.bombEffect = null;
+        }
     }
 
     private void Move()
@@ -66,15 +81,16 @@ public class PlayerController : MonoBehaviour
         float horizontal = input.GetHorizontal();
         float vertical = input.GetVertical();
 
-        Vector3 movement = new Vector3(horizontal, 0f, vertical);
-        // Calculates the next position the player is going to be next frame
-        Vector3 nextPos = rb.position + (movement.normalized * speed * Time.fixedDeltaTime);
-        if (movement != Vector3.zero)
+        Vector3 direction = new Vector3(horizontal, 0f, vertical);;
+
+        if (direction != Vector3.zero)
         {
-            transform.forward = movement;
+            transform.forward = direction;
+            // Calculates the next position the player is going to be next frame
+            Vector3 nextPos = rb.position + (direction.normalized * speed * Time.fixedDeltaTime);
+
             if (CanMove(nextPos))
             {
-                rb.velocity = Vector3.zero;
                 rb.MovePosition(nextPos);
             }
         }
@@ -94,4 +110,30 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Tile tile = collision.gameObject.GetComponent<Tile>();
+        if (tile && tile.slippery)
+        {
+            touchingSlipperyTiles++;
+            physicMaterial.staticFriction = 0f;
+            physicMaterial.dynamicFriction = 0f;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        Tile tile = collision.gameObject.GetComponent<Tile>();
+        if (tile && tile.slippery)
+        {
+            touchingSlipperyTiles = Mathf.Max(touchingSlipperyTiles - 1, 0);
+            if (touchingSlipperyTiles == 0)
+            {
+                physicMaterial.staticFriction = 1f;
+                physicMaterial.dynamicFriction = 1f;
+            }
+        }
+    }
+
 }
