@@ -3,23 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Keyboard Input", menuName = "Input/Keyboard")]
-public class KeyboardInput : ScriptableObject
+public class KeyboardInput : InputScript
 {
-    public KeyCode up, left, down, right, bigBomb, throwingBomb;
-    
-    public float GetHorizontal()
+    public KeyCode up, left, down, right;
+    override public float GetHorizontal()
     {
         float horizontal = 0f;
 
-        if (Input.GetKey(right))
+        if (UnityEngine.Input.GetKey(right))
             horizontal += 1f;
-        if (Input.GetKey(left))
+        if (UnityEngine.Input.GetKey(left))
             horizontal -= 1f;
 
         return horizontal;
     }
 
-    public float GetVertical()
+    override public float GetVertical()
     {
         float vertical = 0f;
 

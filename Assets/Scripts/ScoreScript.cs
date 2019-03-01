@@ -19,6 +19,8 @@ public class ScoreScript : MonoBehaviour
 
     public void AddPlayerToTheList(GameObject obj)
     {
+        listOfPlayers = new List<GameObject>();
+
         listOfPlayers.Add(obj);
     }
 

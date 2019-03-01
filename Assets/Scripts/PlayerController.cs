@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
 
     public BombSettings bombSettings;
-    public KeyboardInput input;
+    public JoystickInput input;
 
     private Rigidbody rb;
     private PhysicMaterial physicMaterial;
@@ -21,9 +21,11 @@ public class PlayerController : MonoBehaviour
     private float cooldownTimerBigBomb;
     private float cooldownTimerThrowingBomb;
     private float throwCharge = 0f;
+    public int controllerNumber;
 
     void Awake()
     {
+        input = new JoystickInput(controllerNumber);
         player = GetComponent<Player>();
         rb = GetComponent<Rigidbody>();
         CapsuleCollider capCol = GetComponent<CapsuleCollider>();
