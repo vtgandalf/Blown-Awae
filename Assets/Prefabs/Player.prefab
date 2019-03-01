@@ -234,7 +234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca4e4b3157175645be06a9cdd3e3794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoringSystem: {fileID: 0}
 --- !u!114 &894140225317783183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,8 +246,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a11494fa331742c408f0489accdbb018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bigBomb: {fileID: 0}
-  throwingBomb: {fileID: 0}
+  bigBomb: {fileID: 3624021668315090466, guid: 97ac360d33560a045a70fe617916c129, type: 3}
+  throwingBomb: {fileID: 8665077598375323569, guid: 54aa18b8959e7a546a7c524cc556de7c,
+    type: 3}
   playerColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &7282822447015993427
 GameObject:

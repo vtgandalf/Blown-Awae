@@ -8,37 +8,33 @@ public class ControllerAssigner : MonoBehaviour
     public Bomb bigBomb;
     public Transform prefab;
     private List<int> indexController;
-    private void controlerDetection()
+
+    private void ControlerDetection()
     {
         indexController = new List<int>();
         int counter = 0;
         foreach (string x in Input.GetJoystickNames())
         {
-            if(x == "") 
+            // Check if controller is empty
+            if(x != "") 
             {
-                //Debug.Log("empty controller");
+                indexController.Add(counter + 1); // coz the array position is actual-1
             }
-            else indexController.Add(counter+1); // coz the array position is actual-1
-            counter ++;
+            counter++;
         }
-        foreach (int x in indexController)
-        {
-            //Debug.Log("Connected:" + x);
-        }
-        //Debug.Log(counter);
     }
 
     public List<int> GetListWithContollerNumbers()
     {
-        controlerDetection();
-        return this.indexController;
+        ControlerDetection();
+        return indexController;
     }
 
     public void ListenForButtonPress()
     {
         foreach (int x in indexController)
         {
-            string button = "Joystick"+ x + "Button0";
+            string button = "Joystick" + x + "Button0";
             if(Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), button)))
             {
                 indexController.Remove(x);
@@ -46,8 +42,6 @@ public class ControllerAssigner : MonoBehaviour
                 playerTransform = Instantiate(prefab, new Vector3(0, 3, 0), Quaternion.identity);
                 PlayerController playerController = playerTransform.GetComponent<PlayerController>();
                 Player player = playerTransform.GetComponent<Player>();
-                player.bigBomb = bigBomb;
-                player.throwingBomb = throwingBomb;
                 player.playerColor = Random.ColorHSV(0f, 1f);
                 playerController.controllerNumber = x;
             }
