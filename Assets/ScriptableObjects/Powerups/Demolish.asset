@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a04fdbc7147e3dc4a95baa527229885c, type: 3}
-  m_Name: Bomb Settings
+  m_Script: {fileID: 11500000, guid: 014a6e51cb1f7a945b4d636412c7e66e, type: 3}
+  m_Name: Demolish
   m_EditorClassIdentifier: 
-  cooldownBigBomb: 2
-  cooldownThrowingBomb: 1
-  throwForce: 10
-  throwUpForce: -0.1
-  chargeRate: 20
-  maxCharge: 10
+  bombEffect: {fileID: 11400000, guid: 17137e165e74bbb4dac4113600bfa2d5, type: 2}

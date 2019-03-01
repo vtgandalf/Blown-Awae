@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9140f5ca2524c4599e7ede45a8520f, type: 3}
   m_Name: Slippery
   m_EditorClassIdentifier: 
-  physicMaterial: {fileID: 13400000, guid: 3c101ae5539479f4c9f3bf271f824cac, type: 2}
-  tileColor: {r: 0, g: 0.9349067, b: 0.9528302, a: 0}
+  tileColor: {r: 0.5518868, g: 0.99077964, b: 1, a: 0}

@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b013d67c6e0fe364db0c12f4ea646900, type: 3}
-  m_Name: ThrowingBomb
+  m_Script: {fileID: 11500000, guid: bbf74c314de46b04095b1f3aa0cbff0f, type: 3}
+  m_Name: Chicken Spawner
   m_EditorClassIdentifier: 
-  lifetime: 3
-  radius: 1.5
-  force: 5
-  upForce: 0.2
-  explosionEffect: {fileID: 7610260110356494282, guid: 804d7b2d690284c43b43c6c32313242a,
+  chickenSpawnerPrefab: {fileID: 745811285834976544, guid: 7aa40e8b232abd54b9743d6886ea4244,
     type: 3}
+  chickenSettings: {fileID: 11400000, guid: 2e4b6c6b7d7bce74484ef6edf1c3d119, type: 2}

@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Tile Physics Change", menuName = "Powerup/BombEffect/TilePhysicsChange")]
-public class SlipperyBE : BombEffect
+[CreateAssetMenu(fileName = "Demolish", menuName = "Powerup/BombEffect/Demolish")]
+public class DemolishBE : BombEffect
 {
-    public Color tileColor;
-
     public override void Activate(List<BombInteractable> hits)
     {
         base.Activate(hits);
@@ -14,9 +12,7 @@ public class SlipperyBE : BombEffect
         {
             if (bi.type == InteractableType.GROUND)
             {
-                Tile tile = bi.GetComponent<Tile>();
-                tile.SetSlippery(true);
-                tile.ChangeColor(tileColor);
+                bi.GetComponent<Tile>().Fall();
             }
         }
     }

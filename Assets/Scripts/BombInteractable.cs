@@ -7,6 +7,7 @@ public enum InteractableType
     OBSTACLE,
     GROUND,
     PLAYER,
+    BOMB
 }
 
 public class BombInteractable : MonoBehaviour
@@ -17,7 +18,7 @@ public class BombInteractable : MonoBehaviour
     private Rigidbody rb;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
@@ -26,6 +27,15 @@ public class BombInteractable : MonoBehaviour
     {
         if (type == InteractableType.GROUND)
             return;
+
+        if (type == InteractableType.OBSTACLE)
+        {
+            SupplyCrate crate = GetComponent<SupplyCrate>();
+            if (crate)
+            {
+                crate.OnExplode();
+            }
+        }
 
         force = Mathf.Max(force - weight, 0f);
         rb.AddForce(direction * force, ForceMode.VelocityChange);

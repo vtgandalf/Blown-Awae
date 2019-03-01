@@ -5,9 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Player player;
-
-    public float rayLength = 5f;
-    public float speed = 1f;
+    
+    public float speed;
 
     public BombSettings bombSettings;
     public KeyboardInput input;
@@ -17,12 +16,13 @@ public class PlayerController : MonoBehaviour
     private float distToGround;
 
     private int touchingSlipperyTiles = 0;
+    private bool moving = false;
 
     private float cooldownTimerBigBomb;
     private float cooldownTimerThrowingBomb;
     private float throwCharge = 0f;
 
-    void Start()
+    void Awake()
     {
         player = GetComponent<Player>();
         rb = GetComponent<Rigidbody>();
@@ -92,19 +92,22 @@ public class PlayerController : MonoBehaviour
             if (CanMove(nextPos))
             {
                 rb.MovePosition(nextPos);
+                moving = true;
             }
+            else moving = false;
         }
+        else moving = false;
     }
 
     private bool CanMove(Vector3 nextPos)
     {
-        return IsGrounded(transform.position) && IsGrounded(nextPos);
+        return IsGrounded(transform.position) && IsGrounded(nextPos) && touchingSlipperyTiles <= 0;
     }
 
     private bool IsGrounded(Vector3 startPos)
     {
         // Checks if there is ground under the player based on the given position
-        if (Physics.Raycast(startPos, Vector3.down, out RaycastHit hit, distToGround + 0.01f))
+        if (Physics.Raycast(startPos, Vector3.down, out RaycastHit hit, distToGround + 1f))
         {
             return true;
         }
@@ -119,6 +122,10 @@ public class PlayerController : MonoBehaviour
             touchingSlipperyTiles++;
             physicMaterial.staticFriction = 0f;
             physicMaterial.dynamicFriction = 0f;
+            if (moving && rb.velocity.magnitude < speed)
+            {
+                rb.velocity = transform.forward * speed;
+            }
         }
     }
 
@@ -127,12 +134,17 @@ public class PlayerController : MonoBehaviour
         Tile tile = collision.gameObject.GetComponent<Tile>();
         if (tile && tile.slippery)
         {
-            touchingSlipperyTiles = Mathf.Max(touchingSlipperyTiles - 1, 0);
-            if (touchingSlipperyTiles == 0)
-            {
-                physicMaterial.staticFriction = 1f;
-                physicMaterial.dynamicFriction = 1f;
-            }
+            Invoke("RemoveSlipperyTile", 0.1f);
+        }
+    }
+
+    private void RemoveSlipperyTile()
+    {
+        touchingSlipperyTiles = Mathf.Max(touchingSlipperyTiles - 1, 0);
+        if (touchingSlipperyTiles == 0)
+        {
+            physicMaterial.staticFriction = 1f;
+            physicMaterial.dynamicFriction = 1f;
         }
     }
 

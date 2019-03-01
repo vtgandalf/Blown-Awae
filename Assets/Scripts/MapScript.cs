@@ -13,7 +13,7 @@ public class MapScript : MonoBehaviour
     void Start()
     {
         tiles = new List<Tile>();
-        FillTilesList();
+        tiles.AddRange(transform.GetComponentsInChildren<Tile>());
         ShouldShrink = false;
     }
 
@@ -24,29 +24,20 @@ public class MapScript : MonoBehaviour
         {
             if(timer > tilesDelay)
             {
-                if (tileIndex < tiles.Count)
-                {
-                    TileFall(tileIndex);
-                    tileIndex++;
-                    timer = 0f;
-                }
-                else ShouldShrink = false;
+                DropNextTile();
+                timer = 0f;
             }   
             timer += Time.deltaTime;
         }
     }
 
-    private void FillTilesList()
+    public void DropNextTile()
     {
-        int children = transform.childCount;
-        for (int i = 0; i < children; ++i)
+        if (tiles.Count > 0)
         {
-            tiles.Add(transform.GetChild(i).GetComponent<Tile>());
+            tiles[0].Fall();
+            tiles.RemoveAt(0);
         }
-    }
-
-    public void TileFall(int index)
-    {
-        tiles[index].Fall();
+        else ShouldShrink = false;
     }
 }

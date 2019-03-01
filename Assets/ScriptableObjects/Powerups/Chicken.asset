@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b013d67c6e0fe364db0c12f4ea646900, type: 3}
-  m_Name: ThrowingBomb
+  m_Script: {fileID: 11500000, guid: 014a6e51cb1f7a945b4d636412c7e66e, type: 3}
+  m_Name: Chicken
   m_EditorClassIdentifier: 
-  lifetime: 3
-  radius: 1.5
-  force: 5
-  upForce: 0.2
-  explosionEffect: {fileID: 7610260110356494282, guid: 804d7b2d690284c43b43c6c32313242a,
-    type: 3}
+  bombEffect: {fileID: 11400000, guid: 3fe0e2074620dbe4190b49c1b3b169e5, type: 2}

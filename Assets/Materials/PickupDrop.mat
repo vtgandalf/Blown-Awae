@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Metal Boots
+  m_Name: PickupDrop
   m_Shader: {fileID: 4800000, guid: d84268709d11078d11005b9844295342, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -31,7 +31,7 @@ Material:
     - _Outline: 0.007018868
     - _Shininess: 0.7
     m_Colors:
-    - _Color: {r: 0.44817817, g: 0.1372549, b: 0.5294118, a: 0}
+    - _Color: {r: 0.20309716, g: 0.26415092, b: 0.24564604, a: 0}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
