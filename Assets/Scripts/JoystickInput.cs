@@ -8,7 +8,7 @@ public class JoystickInput : InputScript
     private int controllerNumber;
     private string horizontalAxis, verticalAxis, bB, tB;
  
-    override public InputScript(int joystickIndex)
+    public JoystickInput (int joystickIndex)
     {
         controllerNumber = joystickIndex;
         Register();

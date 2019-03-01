@@ -28,6 +28,6 @@ public class ControllerDetection : MonoBehaviour
     public List<int> GetListWithContollerNumbers()
     {
         controlerDetection();
-        return this.indexController();
+        return this.indexController;
     }
 }

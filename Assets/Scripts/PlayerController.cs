@@ -10,16 +10,18 @@ public class PlayerController : MonoBehaviour
     public float speed = 1f;
 
     public BombSettings bombSettings;
-    public InputScript input;
+    public JoystickInput input;
 
     private Rigidbody rb;
     private float distToGround;
     private float cooldownTimerBigBomb;
     private float cooldownTimerThrowingBomb;
     private float throwCharge = 0f;
+    public int controllerNumber;
 
     void Start()
     {
+        input = new JoystickInput(controllerNumber);
         player = GetComponent<Player>();
         rb = GetComponent<Rigidbody>();
         CapsuleCollider capCol = GetComponent<CapsuleCollider>();

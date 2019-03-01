@@ -47,6 +47,6 @@ public class MapScript : MonoBehaviour
 
     public void TileFall(int index)
     {
-        tiles[index].Fall();
+        if(tiles[index]!=null)tiles[index].Fall();
     }
 }

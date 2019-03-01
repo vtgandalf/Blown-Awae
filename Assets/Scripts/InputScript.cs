@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "InputScript", menuName = "Blown-Awae/InputScript", order = 0)]
 public abstract class InputScript : ScriptableObject {
     public KeyCode bigBomb, throwingBomb;
-    public abstract void InputScript();
     public abstract float GetHorizontal();
 
     public abstract float GetVertical();
