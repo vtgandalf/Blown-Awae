@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
 
     public BombSettings bombSettings;
-    public JoystickInput input;
+    public VirtualInput input;
 
     private Rigidbody rb;
     private PhysicMaterial physicMaterial;
@@ -21,11 +21,22 @@ public class PlayerController : MonoBehaviour
     private float cooldownTimerBigBomb;
     private float cooldownTimerThrowingBomb;
     private float throwCharge = 0f;
-    public int controllerNumber;
+
+    public void SetVirtualInput(VirtualInput vi)
+    {
+        if (input)
+        {
+            input.OnBigBombDown.RemoveAllListeners();
+            input.OnThrowingBombUp.RemoveAllListeners();
+        }
+
+        input = vi;
+        input.OnBigBombDown.AddListener(OnBigBombDown);
+        input.OnThrowingBombUp.AddListener(OnThrowingBombUp);
+    }
 
     void Awake()
     {
-        input = new JoystickInput(controllerNumber);
         player = GetComponent<Player>();
         rb = GetComponent<Rigidbody>();
         CapsuleCollider capCol = GetComponent<CapsuleCollider>();
@@ -37,34 +48,16 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        input.FixedUpdate();
+
         Move();
 
-        if (Input.GetKey(input.throwingBomb) && throwCharge < bombSettings.maxCharge && cooldownTimerThrowingBomb >= bombSettings.cooldownThrowingBomb)
+        if (input.ThrowingBombHold && throwCharge < bombSettings.maxCharge && cooldownTimerThrowingBomb >= bombSettings.cooldownThrowingBomb)
         {
             throwCharge += Time.fixedDeltaTime * bombSettings.chargeRate;
             throwCharge = Mathf.Min(throwCharge, bombSettings.maxCharge);
-            //Debug.Log(throwCharge);
         }
-        if (Input.GetKeyUp(input.throwingBomb) && cooldownTimerThrowingBomb >= bombSettings.cooldownThrowingBomb)
-        {
-            ThrowingBomb bomb = Instantiate(player.throwingBomb, transform.position + transform.forward, transform.rotation) as ThrowingBomb;
-            ApplyBombEffect(bomb);
-            bomb.Throw(bombSettings.throwForce + throwCharge, bombSettings.throwUpForce);
 
-            throwCharge = 0f;
-            cooldownTimerThrowingBomb = 0f;
-
-            bomb.Owner = player;
-        }
-        if (Input.GetKeyDown(input.bigBomb) && cooldownTimerBigBomb >= bombSettings.cooldownBigBomb)
-        {
-            Bomb bomb = Instantiate(player.bigBomb, transform.position + transform.forward, transform.rotation);
-            ApplyBombEffect(bomb);
-
-            cooldownTimerBigBomb = 0f;
-
-            bomb.Owner = player;
-        }
         cooldownTimerThrowingBomb += Time.fixedDeltaTime;
         cooldownTimerBigBomb += Time.fixedDeltaTime;
     }
@@ -76,6 +69,34 @@ public class PlayerController : MonoBehaviour
             bomb.bombEffect = player.bombEffect;
             player.bombEffect = null;
         }
+    }
+
+    private void OnBigBombDown()
+    {
+        if (cooldownTimerBigBomb < bombSettings.cooldownBigBomb)
+            return;
+
+        Bomb bomb = Instantiate(player.bigBomb, transform.position + transform.forward, transform.rotation);
+        ApplyBombEffect(bomb);
+
+        cooldownTimerBigBomb = 0f;
+
+        bomb.Owner = player;
+    }
+    
+    private void OnThrowingBombUp()
+    {
+        if (cooldownTimerThrowingBomb < bombSettings.cooldownThrowingBomb)
+            return;
+
+        ThrowingBomb bomb = Instantiate(player.throwingBomb, transform.position + transform.forward, transform.rotation) as ThrowingBomb;
+        ApplyBombEffect(bomb);
+        bomb.Throw(bombSettings.throwForce + throwCharge, bombSettings.throwUpForce);
+
+        throwCharge = 0f;
+        cooldownTimerThrowingBomb = 0f;
+
+        bomb.Owner = player;
     }
 
     private void Move()

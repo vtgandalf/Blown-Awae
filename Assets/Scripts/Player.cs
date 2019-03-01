@@ -16,11 +16,10 @@ public class Player : MonoBehaviour
     public Color playerColor;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         playerController = GetComponent<PlayerController>();
         bombInteractable = GetComponent<BombInteractable>();
-        GetComponent<Renderer>().material.color = playerColor;
     }
 
     public void AddSpeed(float speed)
@@ -36,5 +35,10 @@ public class Player : MonoBehaviour
     public void SetBombEffect(BombEffect bombEffect)
     {
         this.bombEffect = bombEffect;
+    }
+
+    public void SetVirtualInput(VirtualInput vi)
+    {
+        playerController.SetVirtualInput(vi);
     }
 }

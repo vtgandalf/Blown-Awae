@@ -6,7 +6,6 @@ public class MapScript : MonoBehaviour
 {
     private List<Tile> tiles;
     public bool ShouldShrink {get; set;}
-    private int tileIndex = 0;
     private float timer = 0f;
     public float tilesDelay = 1f;
     // Start is called before the first frame update

@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b90cf7ba02de3b41b08c07051aa9139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwingBomb: {fileID: 8665077598375323569, guid: 54aa18b8959e7a546a7c524cc556de7c,
+  playerPrefab: {fileID: 894140225317783183, guid: 0a76a8cf646f5124090bfd29e271718a,
     type: 3}
-  bigBomb: {fileID: 3624021668315090466, guid: 97ac360d33560a045a70fe617916c129, type: 3}
-  prefab: {fileID: 7282822446719121976, guid: 0a76a8cf646f5124090bfd29e271718a, type: 3}
+  keyboardInputs:
+  - {fileID: 11400000, guid: d60dcf12c19dc2d429d0281590cb2acb, type: 2}
+  - {fileID: 11400000, guid: b8f5fa2984ee5a441bba6de91aed91e0, type: 2}
