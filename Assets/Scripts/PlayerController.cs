@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 1f;
 
     public BombSettings bombSettings;
-    public KeyboardInput input;
+    public InputScript input;
 
     private Rigidbody rb;
     private float distToGround;

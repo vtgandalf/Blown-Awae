@@ -417,7 +417,7 @@ PrefabInstance:
     - target: {fileID: 7282822446719121976, guid: 0a76a8cf646f5124090bfd29e271718a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.91
+      value: -6.1923513
       objectReference: {fileID: 0}
     - target: {fileID: 7282822446719121976, guid: 0a76a8cf646f5124090bfd29e271718a,
         type: 3}
@@ -488,7 +488,7 @@ PrefabInstance:
         type: 3}
       propertyPath: input
       value: 
-      objectReference: {fileID: 11400000, guid: 79cf6efff5d66e541a8304fd71fa6f16,
+      objectReference: {fileID: 11400000, guid: b8f5fa2984ee5a441bba6de91aed91e0,
         type: 2}
     - target: {fileID: 7282822446719121978, guid: 0a76a8cf646f5124090bfd29e271718a,
         type: 3}
@@ -710,12 +710,6 @@ PrefabInstance:
       propertyPath: playerColor.b
       value: 0.07440368
       objectReference: {fileID: 0}
-    - target: {fileID: 7282822446719121959, guid: 0a76a8cf646f5124090bfd29e271718a,
-        type: 3}
-      propertyPath: input
-      value: 
-      objectReference: {fileID: 11400000, guid: aab601077a7493c40b4dfdc5e9ac163b,
-        type: 2}
     - target: {fileID: 7282822446719121978, guid: 0a76a8cf646f5124090bfd29e271718a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
