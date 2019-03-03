@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private PlayerController playerController;
 
     private BombInteractable bombInteractable;
+    private Renderer rend;
 
     public Color playerColor;
 
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
         bombInteractable = GetComponent<BombInteractable>();
+        rend = GetComponent<Renderer>();
     }
 
     public void AddSpeed(float speed)
@@ -40,5 +42,10 @@ public class Player : MonoBehaviour
     public void SetVirtualInput(VirtualInput vi)
     {
         playerController.SetVirtualInput(vi);
+    }
+
+    public void SetColor(Color color)
+    {
+        rend.material.SetColor("_Color", color);
     }
 }

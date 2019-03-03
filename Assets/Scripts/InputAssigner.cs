@@ -72,7 +72,8 @@ public class InputAssigner : MonoBehaviour
     {
         Player player = Instantiate(playerPrefab, new Vector3(0, 3, 0), Quaternion.identity);
 
-        player.playerColor = Random.ColorHSV(0f, 1f);
+        //player.playerColor = Random.ColorHSV(0f, 1f);
+        player.SetColor(Random.ColorHSV(0f, 1f));
         player.SetVirtualInput(vi);
     }
 
