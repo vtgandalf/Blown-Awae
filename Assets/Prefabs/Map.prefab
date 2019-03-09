@@ -697,7 +697,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36fad26c785120f4e917f1d0363b4bd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilesDelay: 1
+  layersDelay: 1
+  layersToBeLeftAtTheEnd: 1
 --- !u!114 &33964898919163
 MonoBehaviour:
   m_ObjectHideFlags: 0

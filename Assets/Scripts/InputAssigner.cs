@@ -70,7 +70,7 @@ public class InputAssigner : MonoBehaviour
 
     private void SpawnPlayer(VirtualInput vi)
     {
-        Player player = Instantiate(playerPrefab, new Vector3(0, 3, 0), Quaternion.identity);
+        Player player = Instantiate(playerPrefab, this.transform.position, Quaternion.identity);
 
         //player.playerColor = Random.ColorHSV(0f, 1f);
         player.SetColor(Random.ColorHSV(0f, 1f));

@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class MapScript : MonoBehaviour
 {
-    private List<Tile> tiles;
+    private List<MapLayer> layers;
     public bool ShouldShrink {get; set;}
     private float timer = 0f;
-    public float tilesDelay = 1f;
+    public float layersDelay = 1f;
+    public int layersToBeLeftAtTheEnd = 1;
     // Start is called before the first frame update
     void Start()
     {
-        tiles = new List<Tile>();
-        tiles.AddRange(transform.GetComponentsInChildren<Tile>());
+        layers = new List<MapLayer>();
+        layers.AddRange(transform.GetComponentsInChildren<MapLayer>());
         ShouldShrink = false;
+        //timer = layersDelay;
     }
 
     // Update is called once per frame
@@ -21,22 +23,28 @@ public class MapScript : MonoBehaviour
     {
         if(ShouldShrink)
         {
-            if(timer > tilesDelay)
-            {
-                DropNextTile();
-                timer = 0f;
-            }   
-            timer += Time.deltaTime;
+            DropNextLayer();
         }
     }
 
-    public void DropNextTile()
+    public void DropNextLayer()
     {
-        if (tiles.Count > 0)
+        if (layers.Count > 1)
         {
-            tiles[0].Fall();
-            tiles.RemoveAt(0);
+            if(!layers[0].ShouldShrink) layers[0].ShouldShrink = true;
+            if(layers[0].AllTilesHaveFallen) 
+            {
+                if(timer > layersDelay)
+                {
+                    layers.RemoveAt(0);
+                    timer = 0f;
+                }   
+                timer += Time.deltaTime;
+            }
         }
-        else ShouldShrink = false;
+        else 
+        {
+            ShouldShrink = false;
+        }
     }
 }
