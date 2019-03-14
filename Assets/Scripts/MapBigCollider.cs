@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class MapBigCollider : MonoBehaviour
 {
-    public ScoreScript scoringSystem;
+    //public ScoreScript scoringSystem;
+    public PlayerRuntimeSet playerList;
+
     private void OnTriggerExit(Collider other) {
-        if(other.gameObject.GetComponent<Player>()!=null) scoringSystem.UpdatePlayerList(other.gameObject);
+        Player player = other.gameObject.GetComponent<Player>();
+
+        if (player != null)
+            playerList.RemoveItem(player);//scoringSystem.UpdatePlayerList(other.gameObject);
         other.gameObject.SetActive(false);
     }
 }

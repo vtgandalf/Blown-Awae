@@ -48,3 +48,4 @@ MonoBehaviour:
   keyboardInputs:
   - {fileID: 11400000, guid: d60dcf12c19dc2d429d0281590cb2acb, type: 2}
   - {fileID: 11400000, guid: b8f5fa2984ee5a441bba6de91aed91e0, type: 2}
+  spawnPoints: {fileID: 11400000, guid: 9a3c8ab416367a2438240ae88ef8019b, type: 2}

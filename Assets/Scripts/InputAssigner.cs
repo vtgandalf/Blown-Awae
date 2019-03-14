@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class InputAssigner : MonoBehaviour
 {
-    public Player playerPrefab;
-    public List<KeyboardInput> keyboardInputs;
+    [SerializeField] private Player playerPrefab;
+    [SerializeField] private List<KeyboardInput> keyboardInputs;
+    [SerializeField] private SpawnPointRuntimeSet spawnPoints;
     private List<int> indexController;
 
     public void SetupKeyboardListeners()
@@ -70,7 +71,9 @@ public class InputAssigner : MonoBehaviour
 
     private void SpawnPlayer(VirtualInput vi)
     {
-        Player player = Instantiate(playerPrefab, this.transform.position, Quaternion.identity);
+        Vector3 spawnPoint = spawnPoints.GetRandomUnusedSpawnPoint();
+        Debug.Log(spawnPoint);
+        Player player = Instantiate(playerPrefab, spawnPoint, Quaternion.identity);
 
         //player.playerColor = Random.ColorHSV(0f, 1f);
         player.SetColor(Random.ColorHSV(0f, 1f));

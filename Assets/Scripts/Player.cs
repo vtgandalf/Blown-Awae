@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     private Renderer rend;
 
     public Color playerColor;
+    [SerializeField] private GameObject crown;
+    [SerializeField] private PlayerRuntimeSet playerList;
 
     // Start is called before the first frame update
     void Awake()
@@ -22,6 +24,7 @@ public class Player : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         bombInteractable = GetComponent<BombInteractable>();
         rend = GetComponent<Renderer>();
+        playerList.AddItem(this);
     }
 
     public void AddSpeed(float speed)
@@ -47,5 +50,25 @@ public class Player : MonoBehaviour
     public void SetColor(Color color)
     {
         rend.material.SetColor("_Color", color);
+    }
+
+    public void SetCrown(bool active)
+    {
+        crown.SetActive(active);
+    }
+
+    private void OnEnable()
+    {
+        playerList.AddItem(this);
+    }
+
+    private void OnDisable()
+    {
+        playerList.RemoveItem(this);
+    }
+
+    private void OnDestroy()
+    {
+        playerList.RemoveItem(this);
     }
 }

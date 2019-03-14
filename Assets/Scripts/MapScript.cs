@@ -4,18 +4,31 @@ using UnityEngine;
 
 public class MapScript : MonoBehaviour
 {
+    [SerializeField] private Transform spawnPointsParent;
+    [SerializeField] private SpawnPointRuntimeSet spawnPointsList;
+
     private List<MapLayer> layers;
     public bool ShouldShrink {get; set;}
     private float timer = 0f;
     public float layersDelay = 1f;
     public int layersToBeLeftAtTheEnd = 1;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         layers = new List<MapLayer>();
         layers.AddRange(transform.GetComponentsInChildren<MapLayer>());
         ShouldShrink = false;
         //timer = layersDelay;
+        SetSpawnPoints();
+    }
+
+    private void SetSpawnPoints()
+    {
+        spawnPointsList.Items.Clear();
+        foreach(Transform transform in spawnPointsParent)
+        {
+            spawnPointsList.AddItem(transform.position);
+        }
     }
 
     // Update is called once per frame
