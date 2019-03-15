@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Score/Record")]
-public class RecordScore : Score
+public class RecordStat : Stat
 {
     [Tooltip("Highest value is taken (lowest when unchecked)")]
     public bool HighestRecord;
 
-    public override void ChangeScore(Score newScore)
+    public RecordStat(Player player, string name, float value, bool highestRecord = true) : base(player, name, value)
+    {
+        HighestRecord = highestRecord;
+    }
+
+    public override void ChangeScore(Stat newScore)
     {
         if (!PlayerAndNameCorrect(newScore))
             return;

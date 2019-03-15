@@ -53,9 +53,14 @@ public class Bomb : MonoBehaviour
                 difference.y = data.upForce;
                 Vector3 direction = Vector3.Normalize(difference);
                 
-                bi.Explode(direction, data.force);
+                bi.Explode(direction, data.force, Owner);
             }
         }
+
+        // Adds hits to StatTracker
+        Owner.StatTracker.AddStat(new CountStat(Owner, "hits", bombInteractables.Count));
+        Owner.StatTracker.AddStat(new RecordStat(Owner, "mostHitsWithOneBomb", bombInteractables.Count));
+
         if (bombEffect != null)
         {
             bombEffect.Activate(bombInteractables);

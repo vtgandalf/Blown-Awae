@@ -14,8 +14,9 @@ public class Pickup : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Player player = other.gameObject.GetComponent<Player>();
-        if (player)
+        if (player != null)
         {
+            player.StatTracker.AddStat(new CountStat(player, "pickups", 1));
             powerup.Apply(player);
             Destroy(gameObject);
         }

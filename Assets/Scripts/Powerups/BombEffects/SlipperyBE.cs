@@ -10,14 +10,21 @@ public class SlipperyBE : BombEffect
     public override void Activate(List<BombInteractable> hits)
     {
         base.Activate(hits);
+        int tilesAltered = 0;
         foreach (BombInteractable bi in hits)
         {
             if (bi.type == InteractableType.GROUND)
             {
                 Tile tile = bi.GetComponent<Tile>();
-                tile.SetSlippery(true);
-                tile.ChangeColor(tileColor);
+                if (tile.slippery == false)
+                {
+                    tilesAltered++;
+                    tile.SetSlippery(true);
+                    tile.ChangeColor(tileColor);
+                }
             }
         }
+
+        Owner.StatTracker.AddStat(new CountStat(Owner, "tilesAltered", tilesAltered));
     }
 }

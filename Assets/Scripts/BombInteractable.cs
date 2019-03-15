@@ -14,6 +14,7 @@ public class BombInteractable : MonoBehaviour
 {
     public InteractableType type;
     public float weight = 0f;
+    public Player lastPlayerHitBy; // Keeps track of which player hit this object last
 
     private Rigidbody rb;
 
@@ -23,8 +24,11 @@ public class BombInteractable : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    public void Explode(Vector3 direction, float force)
+    public void Explode(Vector3 direction, float force, Player owner = null)
     {
+        if (owner != null)
+            lastPlayerHitBy = owner;
+
         if (type == InteractableType.GROUND)
             return;
 

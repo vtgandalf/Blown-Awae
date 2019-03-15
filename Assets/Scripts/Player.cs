@@ -14,9 +14,16 @@ public class Player : MonoBehaviour
     private BombInteractable bombInteractable;
     private Renderer rend;
 
-    public Color playerColor;
+    public StatTracker StatTracker;
+
+    [SerializeField] private Color playerColor;
     [SerializeField] private GameObject crown;
     [SerializeField] private PlayerRuntimeSet playerList;
+
+    public Player GetLastPlayerHitBy()
+    {
+        return bombInteractable.lastPlayerHitBy;
+    }
 
     // Start is called before the first frame update
     void Awake()
@@ -24,6 +31,7 @@ public class Player : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         bombInteractable = GetComponent<BombInteractable>();
         rend = GetComponent<Renderer>();
+        StatTracker = ScriptableObject.CreateInstance(typeof(StatTracker)) as StatTracker;
         playerList.AddItem(this);
     }
 
@@ -39,6 +47,7 @@ public class Player : MonoBehaviour
 
     public void SetBombEffect(BombEffect bombEffect)
     {
+        bombEffect.Owner = this;
         this.bombEffect = bombEffect;
     }
 

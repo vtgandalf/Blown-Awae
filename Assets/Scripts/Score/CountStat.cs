@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Score/Count")]
-public class CountScore : Score
+public class CountStat : Stat
 {
-    public override void ChangeScore(Score newScore)
+    public CountStat(Player player, string name, float value) : base(player, name, value) {}
+
+    public override void ChangeScore(Stat newScore)
     {
         if (!PlayerAndNameCorrect(newScore))
             return;

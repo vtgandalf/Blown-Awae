@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
+    private List<RecordStat> confirmedKills = new List<RecordStat>();
     public List<Player> allPlayers = new List<Player>();
     [SerializeField] private PlayerRuntimeSet currentPlayers;
     [SerializeField] private SpawnPointRuntimeSet spawnPoints;
-    [SerializeField] private ScoreTracker scoreTracker;
 
     void Awake ()
     {
         //listOfPlayers = new List<GameObject>();
         currentPlayers.OnAddItem.AddListener(AddPlayer);
         currentPlayers.OnRemoveItem.AddListener(CheckList);
+        currentPlayers.OnRemoveItem.AddListener(AddKill);
     }
 
     private void Start()
@@ -31,10 +32,8 @@ public class ScoreManager : MonoBehaviour
             allPlayers.Add(player);
     }
 
-    private void CheckList(Player player)
+    private void CheckList(Player removedPlayer)
     {
-        player.SetCrown(false);
-
         Debug.Log(currentPlayers.Items.Count);
         if(currentPlayers.Items.Count > 1)
         {
@@ -54,6 +53,30 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    private void AddKill(Player killedPlayer)
+    {
+        killedPlayer.StatTracker.AddStat(new CountStat(killedPlayer, "deaths", 1));
+        killedPlayer.SetCrown(false);
+
+        Player killer = killedPlayer.GetLastPlayerHitBy();
+        if (killer == null)
+            return;
+
+        killer.StatTracker.AddStat(new CountStat(killer, "kills", 1));
+
+        bool scoreChanged = false;
+        foreach (RecordStat kills in confirmedKills)
+        {
+            if (kills.Player == killer)
+            {
+                scoreChanged = true;
+                kills.ChangeScore(new RecordStat(killer, "mostKillsInARound" , kills.Value + 1));
+            }
+        }
+        if (!scoreChanged)
+            confirmedKills.Add(new RecordStat(killer, "mostKillsInARound", 1));
+    }
+
     private void EveryBodyLoses()
     {
         Debug.Log("everybody loses");
@@ -61,11 +84,19 @@ public class ScoreManager : MonoBehaviour
 
     private void WeHaveAWinner(Player player)
     {
+        player.StatTracker.AddStat(new CountStat(player, "wins", 1));
         Debug.Log("we have a winner:"+player);
     }
 
     private void ResetRound()
     {
+        // Apply mostKills in a round
+        foreach (RecordStat mostKills in confirmedKills)
+        {
+            mostKills.Player.StatTracker.AddStat(mostKills);
+        }
+        confirmedKills.Clear();
+
         spawnPoints.ResetSpawnPoints();
         // TODO: Fix setting players active/setting position
         foreach (Player player in allPlayers)
