@@ -13,7 +13,7 @@ public class ScoreManager : MonoBehaviour
     {
         //listOfPlayers = new List<GameObject>();
         currentPlayers.OnAddItem.AddListener(AddPlayer);
-        currentPlayers.OnRemoveItem.AddListener(CheckList);
+        currentPlayers.OnRemoveItem.AddListener(CheckRoundOver);
         currentPlayers.OnRemoveItem.AddListener(AddKill);
     }
 
@@ -32,24 +32,19 @@ public class ScoreManager : MonoBehaviour
             allPlayers.Add(player);
     }
 
-    private void CheckList(Player removedPlayer)
+    private void CheckRoundOver(Player removedPlayer)
     {
-        Debug.Log(currentPlayers.Items.Count);
-        if(currentPlayers.Items.Count > 1)
-        {
-            // there are more than one player still playing
-        }
-        else if (currentPlayers.Items.Count == 1)
+        if (currentPlayers.Items.Count == 1)
         {
             // there is a winner
             WeHaveAWinner(currentPlayers.Items[0]);
             currentPlayers.Items[0].SetCrown(true);
-            ResetRound();
+            StartCoroutine(ResetRound());
         }
         else
         {
             EveryBodyLoses();
-            ResetRound();
+            StartCoroutine(ResetRound());
         }
     }
 
@@ -88,8 +83,10 @@ public class ScoreManager : MonoBehaviour
         Debug.Log("we have a winner:"+player);
     }
 
-    private void ResetRound()
+    private IEnumerator ResetRound()
     {
+        yield return new WaitForFixedUpdate();
+
         // Apply mostKills in a round
         foreach (RecordStat mostKills in confirmedKills)
         {
@@ -104,5 +101,7 @@ public class ScoreManager : MonoBehaviour
             player.transform.position = spawnPoints.GetRandomUnusedSpawnPoint();
             player.gameObject.SetActive(true);
         }
+
+        yield return null;
     }
 }

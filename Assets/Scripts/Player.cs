@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         bombInteractable = GetComponent<BombInteractable>();
         rend = GetComponent<Renderer>();
-        StatTracker = ScriptableObject.CreateInstance(typeof(StatTracker)) as StatTracker;
+        StatTracker = ScriptableObject.CreateInstance<StatTracker>();
         playerList.AddItem(this);
     }
 

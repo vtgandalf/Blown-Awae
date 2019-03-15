@@ -9,10 +9,6 @@ public class MapBigCollider : MonoBehaviour
     private void OnTriggerExit(Collider other) {
         Player player = other.gameObject.GetComponent<Player>();
 
-        if (player != null)
-        {
-            playerList.RemoveItem(player);
-        }
         other.gameObject.SetActive(false);
     }
 }

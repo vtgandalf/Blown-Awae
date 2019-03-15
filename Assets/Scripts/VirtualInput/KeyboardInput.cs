@@ -6,7 +6,7 @@ using UnityEngine;
 public class KeyboardInput : VirtualInput
 {
     public KeyCode up, left, down, right, bigBomb, throwingBomb;
-    public float sensitivity = 5f;
+    public float sensitivity = 1f;
 
     private float horizontal = 0f;
     private float vertical = 0f;
@@ -44,7 +44,9 @@ public class KeyboardInput : VirtualInput
         if (Input.GetKey(left))
             direction -= 1f;
 
-        horizontal = Mathf.Lerp(horizontal, direction, Time.fixedDeltaTime * sensitivity);
+        if (direction == 0f)
+            horizontal = 0f;
+        else horizontal = Mathf.Lerp(horizontal, direction, Time.fixedDeltaTime * sensitivity);
 
         return horizontal;
     }
@@ -58,7 +60,9 @@ public class KeyboardInput : VirtualInput
         if (Input.GetKey(down))
             direction -= 1f;
 
-        vertical = Mathf.Lerp(vertical, direction, Time.fixedDeltaTime * sensitivity);
+        if (direction == 0f)
+            vertical = 0f;
+        else vertical = Mathf.Lerp(vertical, direction, Time.fixedDeltaTime * sensitivity);
 
         return vertical;
     }

@@ -9,19 +9,19 @@ public class InputAssigner : MonoBehaviour
     [SerializeField] private SpawnPointRuntimeSet spawnPoints;
     private List<int> indexController;
 
-    public void SetupKeyboardListeners()
-    {
-        foreach (KeyboardInput ki in keyboardInputs)
-        {
-            ki.OnThrowingBombDown.AddListener(delegate { OnKeyboardConfirm(ki); });
-        }
-    }
+    //public void SetupKeyboardListeners()
+    //{
+    //    foreach (KeyboardInput ki in keyboardInputs)
+    //    {
+    //        ki.OnThrowingBombDown.AddListener(delegate { OnKeyboardConfirm(ki); });
+    //    }
+    //}
 
-    private void OnKeyboardConfirm(KeyboardInput ki)
-    {
-        ki.OnThrowingBombDown.RemoveAllListeners();
-        SpawnPlayer(ki);
-    }
+    //private void OnKeyboardConfirm(KeyboardInput ki)
+    //{
+    //    ki.OnThrowingBombDown.RemoveAllListeners();
+    //    SpawnPlayer(ki);
+    //}
 
     private void ControlerDetection()
     {
@@ -44,9 +44,9 @@ public class InputAssigner : MonoBehaviour
         return this.indexController;
     }
     
-    public void ListenForJoystickConfirm()
+    private void ListenForJoystickConfirm()
     {
-        for (int i = 0; i < indexController.Count; i++)
+        for (int i = indexController.Count - 1; i >= 0; i--)
         {
             int controllerNumber = indexController[i];
             string button = "Joystick" + controllerNumber + "Button0";
@@ -55,7 +55,22 @@ public class InputAssigner : MonoBehaviour
                 SpawnPlayer(CreateJoystickInput(controllerNumber));
 
                 indexController.RemoveAt(i);
-                i--;
+            }
+        }
+    }
+
+    private void ListenForKeyboardConfirm()
+    {
+        if (keyboardInputs.Count == 0)
+            return;
+
+        for (int i = keyboardInputs.Count - 1; i >= 0; i--)
+        {
+            if (Input.GetKeyDown(keyboardInputs[i].throwingBomb))
+            {
+                SpawnPlayer(keyboardInputs[i]);
+
+                keyboardInputs.RemoveAt(i);
             }
         }
     }
@@ -83,12 +98,12 @@ public class InputAssigner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetupKeyboardListeners();
         GetListWithContollerNumbers();
     }
 
     void FixedUpdate()
     {
         ListenForJoystickConfirm();
+        ListenForKeyboardConfirm();
     }
 }
