@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbf74c314de46b04095b1f3aa0cbff0f, type: 3}
   m_Name: Chicken Spawner
   m_EditorClassIdentifier: 
+  image: {fileID: 21300000, guid: 19b3c94791d8fdd4c8daac2116e07f5b, type: 3}
   chickenSpawnerPrefab: {fileID: 745811285834976544, guid: 7aa40e8b232abd54b9743d6886ea4244,
     type: 3}
   chickenSettings: {fileID: 11400000, guid: 2e4b6c6b7d7bce74484ef6edf1c3d119, type: 2}

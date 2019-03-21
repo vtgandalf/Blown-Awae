@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9140f5ca2524c4599e7ede45a8520f, type: 3}
   m_Name: Slippery
   m_EditorClassIdentifier: 
+  image: {fileID: 21300000, guid: 0942b6330cb265742a1bf7df0d5ed6f5, type: 3}
   tileColor: {r: 0.5518868, g: 0.99077964, b: 1, a: 0}
