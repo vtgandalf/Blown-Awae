@@ -24,7 +24,7 @@ public class JoystickInput : VirtualInput
         throwingBombButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), tB);
     }
 
-    public override void FixedUpdate()
+    public override void CheckForInput()
     {
         if (Input.GetKeyDown(bigBombButton))
         {

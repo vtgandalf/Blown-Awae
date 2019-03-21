@@ -16,5 +16,5 @@ public abstract class VirtualInput : ScriptableObject
 
     public abstract float GetVertical();
 
-    public abstract void FixedUpdate();
+    public abstract void CheckForInput();
 }

@@ -11,7 +11,7 @@ public class KeyboardInput : VirtualInput
     private float horizontal = 0f;
     private float vertical = 0f;
 
-    public override void FixedUpdate()
+    public override void CheckForInput()
     {
         if (Input.GetKeyDown(bigBomb))
         {

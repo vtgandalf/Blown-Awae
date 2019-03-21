@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        input.FixedUpdate();
+        input.CheckForInput();
 
         Move();
 
