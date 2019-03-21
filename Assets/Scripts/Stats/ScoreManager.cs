@@ -39,12 +39,12 @@ public class ScoreManager : MonoBehaviour
             // there is a winner
             WeHaveAWinner(currentPlayers.Items[0]);
             currentPlayers.Items[0].SetCrown(true);
-            StartCoroutine(ResetRound());
+            //StartCoroutine(ResetRound()); // Disabled for Demo
         }
         else
         {
             EveryBodyLoses();
-            StartCoroutine(ResetRound());
+            //StartCoroutine(ResetRound()); // Disabled for Demo
         }
     }
 

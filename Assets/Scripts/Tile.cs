@@ -31,12 +31,12 @@ public class Tile : MonoBehaviour
         falling = true;
     }
 
-    internal void ChangeColor(Color tileColor)
+    public void ChangeColor(Color tileColor)
     {
         GetComponent<MeshRenderer>().material.color = tileColor;
     }
 
-    internal void SetSlippery(bool slippery)
+    public void SetSlippery(bool slippery)
     {
         this.slippery = slippery;
     }
