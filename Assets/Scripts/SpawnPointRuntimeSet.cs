@@ -24,7 +24,7 @@ public class SpawnPointRuntimeSet : RuntimeSet<Vector3>
     {
         if (!unusedSpawnPoints.Contains(spawnPoint))
         {
-            unusedSpawnPoints.Remove(spawnPoint);
+            unusedSpawnPoints.Add(spawnPoint);
         }
     }
 
