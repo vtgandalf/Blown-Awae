@@ -18,4 +18,4 @@ MonoBehaviour:
   spawnInterval: 0.2
   spawnDistance: 3
   chickenSpeed: 12
-  chickenForce: 4
+  chickenForce: 3

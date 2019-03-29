@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SpeedUp
   m_EditorClassIdentifier: 
   speedBonus: 2
-  weightBonus: -2
+  weightBonus: -1

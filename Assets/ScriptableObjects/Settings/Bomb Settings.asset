@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04fdbc7147e3dc4a95baa527229885c, type: 3}
   m_Name: Bomb Settings
   m_EditorClassIdentifier: 
-  cooldownBigBomb: 2
+  cooldownBigBomb: 1.5
   cooldownThrowingBomb: 0.8
   throwForce: 5
-  throwUpForce: -0.1
+  throwUpForce: 0.15
   chargeRate: 30
   maxCharge: 15

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SpeedDown
   m_EditorClassIdentifier: 
   speedBonus: -2
-  weightBonus: 2
+  weightBonus: 1
