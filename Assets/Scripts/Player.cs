@@ -12,12 +12,11 @@ public class Player : MonoBehaviour
     private PlayerController playerController;
 
     private BombInteractable bombInteractable;
-    private Renderer rend;
+    private Color playerColor;
 
     public StatTracker StatTracker;
-
-    [SerializeField] private Color playerColor;
     [SerializeField] private GameObject crown;
+    [SerializeField] private Renderer rend;
     [SerializeField] private PlayerRuntimeSet playerList;
 
     public Player GetLastPlayerHitBy()
@@ -30,7 +29,6 @@ public class Player : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
         bombInteractable = GetComponent<BombInteractable>();
-        rend = GetComponent<Renderer>();
         StatTracker = ScriptableObject.CreateInstance<StatTracker>();
         playerList.AddItem(this);
     }

@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
 
         ThrowingBomb bomb = Instantiate(player.throwingBomb, transform.position + transform.forward, transform.rotation) as ThrowingBomb;
         ApplyBombEffect(bomb);
-        bomb.Throw(bombSettings.throwForce + throwCharge, bombSettings.throwUpForce);
+        bomb.Throw(bombSettings.throwForce + throwCharge, bombSettings.throwUpForce, bombSettings.maxBounces);
 
         throwCharge = 0f;
         cooldownTimerThrowingBomb = 0f;

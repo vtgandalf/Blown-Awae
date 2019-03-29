@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapLayer : MonoBehaviour
 {
-     private List<Tile> tiles;
+    private List<Tile> tiles;
     public bool ShouldShrink {get; set;}
 
     public bool AllTilesHaveFallen { get; set; }

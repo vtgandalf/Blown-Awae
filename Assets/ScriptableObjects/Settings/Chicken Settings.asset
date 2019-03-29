@@ -16,6 +16,6 @@ MonoBehaviour:
     type: 3}
   chickensToSpawn: 25
   spawnInterval: 0.2
-  spawnDistance: 3
-  chickenSpeed: 12
+  spawnDistance: 5
+  chickenSpeed: 15
   chickenForce: 3

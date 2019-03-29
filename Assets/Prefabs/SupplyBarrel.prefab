@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   weight: 0
+  lastPlayerHitBy: {fileID: 0}
 --- !u!114 &4253223978175885001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,5 +138,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1e9d40465a2f34280d634d1013af41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnChance: 1
   spawner: {fileID: 11400000, guid: 8d5913f37e6aa534897b15c89fbc6ecf, type: 2}
+  tileList: {fileID: 11400000, guid: 447dd4f49ee660349abf58abff34969f, type: 2}

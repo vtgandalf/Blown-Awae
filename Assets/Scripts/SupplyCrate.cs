@@ -4,10 +4,25 @@ using UnityEngine;
 
 public class SupplyCrate : MonoBehaviour
 {
-    public PickupSpawner spawner;
+    [SerializeField] private PickupSpawner spawner;
+    [SerializeField] private TileRuntimeSet tileList;
+
+    private Tile parent;
+
+    public void Awake()
+    {
+        if (transform.parent != null)
+        {
+            Tile tile = transform.parent.GetComponent<Tile>();
+            if (tile != null)
+                parent = tile;
+        }
+    }
 
     public void OnExplode()
     {
+        if (parent != null)
+            tileList.SetUsable(parent);
         spawner.SpawnRandomPowerup(transform.position);
         GetComponent<Collider>().enabled = false;
         Destroy(gameObject, 5f);

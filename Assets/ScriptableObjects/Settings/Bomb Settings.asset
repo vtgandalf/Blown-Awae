@@ -18,3 +18,4 @@ MonoBehaviour:
   throwUpForce: 0.15
   chargeRate: 30
   maxCharge: 15
+  maxBounces: 4

@@ -38,4 +38,4 @@ MonoBehaviour:
   right: 100
   bigBomb: 98
   throwingBomb: 32
-  sensitivity: 5
+  sensitivity: 10

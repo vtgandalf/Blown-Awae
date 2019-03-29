@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
+    [SerializeField] private TileRuntimeSet tileList;
+
     private Rigidbody rb;
     public bool slippery = false;
 
@@ -14,6 +16,11 @@ public class Tile : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+    }
+
+    private void OnEnable()
+    {
+        tileList.AddItem(this);
     }
 
     private void FixedUpdate()
@@ -29,6 +36,7 @@ public class Tile : MonoBehaviour
         transform.parent = null;
         rb.isKinematic = false;
         falling = true;
+        tileList.RemoveItem(this);
     }
 
     public void ChangeColor(Color tileColor)
