@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Slippery
   m_EditorClassIdentifier: 
   Owner: {fileID: 0}
+  Image: {fileID: 21300000, guid: 2900f54eb0b33b846bf724fe57d7ae37, type: 3}
   tileColor: {r: 0.62793696, g: 0.8644114, b: 0.9716981, a: 0}

@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac6cd4f2f9dfbac48a55bc1481a89883, type: 3}
   m_Name: Demolish
   m_EditorClassIdentifier: 
+  Owner: {fileID: 0}
+  Image: {fileID: 21300000, guid: 33572a07a916f5d48b3c8bab3c6e1804, type: 3}

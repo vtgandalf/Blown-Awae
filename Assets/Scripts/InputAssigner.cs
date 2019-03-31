@@ -93,6 +93,7 @@ public class InputAssigner : MonoBehaviour
         //player.playerColor = Random.ColorHSV(0f, 1f);
         player.SetColor(Random.ColorHSV(0f, 1f));
         player.SetVirtualInput(vi);
+        player.transform.GetChild(2).GetComponent<Canvas>().worldCamera = Camera.main;
     }
 
     // Start is called before the first frame update

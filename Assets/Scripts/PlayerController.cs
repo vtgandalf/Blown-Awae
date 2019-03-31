@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     private float cooldownTimerThrowingBomb;
     private float throwCharge = 0f;
 
+    public float ThrowCharge(){ return throwCharge/bombSettings.maxCharge; }
+
     public void SetVirtualInput(VirtualInput vi)
     {
         if (input)
