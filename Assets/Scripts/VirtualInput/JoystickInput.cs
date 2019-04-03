@@ -7,7 +7,7 @@ public class JoystickInput : VirtualInput
 {
     private int controllerNumber;
     private string horizontalAxis, verticalAxis;
-    private KeyCode bigBombButton, throwingBombButton;
+    private KeyCode bigBombButton, throwingBombButton, startButton;
 
     public void SetControllerNumber(int joystickIndex)
     {
@@ -20,8 +20,10 @@ public class JoystickInput : VirtualInput
         verticalAxis = "J" + controllerNumber + "Vertical";
         string bB = "Joystick"+ controllerNumber + "Button1";
         string tB = "Joystick"+ controllerNumber + "Button0";
+        string start = "Joystick"+ controllerNumber + "Button7";
         bigBombButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), bB);
         throwingBombButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), tB);
+        startButton = (KeyCode)System.Enum.Parse(typeof(KeyCode), start);
     }
 
     public override void CheckForInput()
@@ -45,6 +47,10 @@ public class JoystickInput : VirtualInput
         {
             ThrowingBombHold = false;
             OnThrowingBombUp.Invoke();
+        }
+        if (Input.GetKeyUp(startButton))
+        {
+            OnStartDown.Invoke();
         }
     }
 

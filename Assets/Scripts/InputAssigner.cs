@@ -6,6 +6,7 @@ public class InputAssigner : MonoBehaviour
 {
     [SerializeField] private Player playerPrefab;
     [SerializeField] private List<KeyboardInput> keyboardInputs;
+    [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private SpawnPointRuntimeSet spawnPoints;
     private List<int> indexController;
 
@@ -49,7 +50,7 @@ public class InputAssigner : MonoBehaviour
         for (int i = indexController.Count - 1; i >= 0; i--)
         {
             int controllerNumber = indexController[i];
-            string button = "Joystick" + controllerNumber + "Button0";
+            string button = "Joystick" + controllerNumber + "Button7";
             if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), button)))
             {
                 SpawnPlayer(CreateJoystickInput(controllerNumber));
@@ -94,6 +95,7 @@ public class InputAssigner : MonoBehaviour
         player.SetColor(Random.ColorHSV(0f, 1f));
         player.SetVirtualInput(vi);
         player.transform.GetChild(2).GetComponent<Canvas>().worldCamera = Camera.main;
+        player.GetComponent<PlayerController>().scoreManager = scoreManager;
     }
 
     // Start is called before the first frame update

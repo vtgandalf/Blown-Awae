@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     private Player player;
+    public ScoreManager scoreManager;
     
     public float speed;
 
@@ -30,11 +32,13 @@ public class PlayerController : MonoBehaviour
         {
             input.OnBigBombDown.RemoveAllListeners();
             input.OnThrowingBombUp.RemoveAllListeners();
+            input.OnStartDown.RemoveAllListeners();
         }
 
         input = vi;
         input.OnBigBombDown.AddListener(OnBigBombDown);
         input.OnThrowingBombUp.AddListener(OnThrowingBombUp);
+        input.OnStartDown.AddListener(OnStartDown);
     }
 
     void Awake()
@@ -99,6 +103,15 @@ public class PlayerController : MonoBehaviour
         cooldownTimerThrowingBomb = 0f;
 
         bomb.Owner = player;
+    }
+
+    private void OnStartDown()
+    {
+        if(scoreManager.RounHasEnded)
+        {
+            Scene scene = SceneManager.GetActiveScene(); 
+            SceneManager.LoadScene(scene.name);
+        }
     }
 
     private void Move()

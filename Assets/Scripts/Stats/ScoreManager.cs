@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -9,9 +10,12 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private PlayerRuntimeSet currentPlayers;
     [SerializeField] private SpawnPointRuntimeSet spawnPoints;
 
+    public bool RounHasEnded { get; set; }
+
     void Awake ()
     {
         //listOfPlayers = new List<GameObject>();
+        RounHasEnded = false;
         currentPlayers.OnAddItem.AddListener(AddPlayer);
         currentPlayers.OnRemoveItem.AddListener(CheckRoundOver);
         currentPlayers.OnRemoveItem.AddListener(AddKill);
@@ -75,12 +79,16 @@ public class ScoreManager : MonoBehaviour
     private void EveryBodyLoses()
     {
         Debug.Log("everybody loses");
+        RounHasEnded = true;
+        Scene scene = SceneManager.GetActiveScene(); 
+        SceneManager.LoadScene(scene.name);
     }
 
     private void WeHaveAWinner(Player player)
     {
         player.StatTracker.AddStat(new CountStat(player, "wins", 1));
         Debug.Log("we have a winner:"+player);
+        RounHasEnded = true;
     }
 
     private IEnumerator ResetRound()

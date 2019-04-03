@@ -5,8 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "RuntimeSet/Tile")]
 public class TileRuntimeSet : RuntimeSet<Tile>
 {
-    private List<Tile> unusedTiles;
-
+    [SerializeField]private List<Tile> unusedTiles;
     private void OnEnable()
     {
         ResetTiles();
@@ -38,6 +37,7 @@ public class TileRuntimeSet : RuntimeSet<Tile>
 
     public void ResetTiles()
     {
+        Debug.Log("list created");
         unusedTiles = new List<Tile>(Items);
     }
 
@@ -48,6 +48,7 @@ public class TileRuntimeSet : RuntimeSet<Tile>
             return null;
 
         Tile tile = unusedTiles[Random.Range(0, unusedTiles.Count - 1)];
+        Debug.Log(tile);
         SetUnusable(tile);
         return tile;
     }
