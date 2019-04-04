@@ -45,10 +45,14 @@ public class ScoreManager : MonoBehaviour
             currentPlayers.Items[0].SetCrown(true);
             //StartCoroutine(ResetRound()); // Disabled for Demo
         }
-        else
+        else if (currentPlayers.Items.Count == 0)
         {
             EveryBodyLoses();
             //StartCoroutine(ResetRound()); // Disabled for Demo
+        }
+        else
+        {
+            Debug.Log(removedPlayer+" has died T^T");
         }
     }
 
