@@ -5,6 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    // SOUNDS
+
+    [SerializeField] private AudioClip firstNoot;
+    [SerializeField] private AudioClip secondNoot;
+    [SerializeField] private AudioClip wholeNoot;
+    [SerializeField] private AudioSource audioSource;
+
+    // END SOUNDS
     private Player player;
     public ScoreManager scoreManager;
     
@@ -33,12 +41,14 @@ public class PlayerController : MonoBehaviour
             input.OnBigBombDown.RemoveAllListeners();
             input.OnThrowingBombUp.RemoveAllListeners();
             input.OnStartDown.RemoveAllListeners();
+            input.OnThrowingBombDown.RemoveAllListeners();
         }
 
         input = vi;
         input.OnBigBombDown.AddListener(OnBigBombDown);
         input.OnThrowingBombUp.AddListener(OnThrowingBombUp);
         input.OnStartDown.AddListener(OnStartDown);
+        input.OnThrowingBombDown.AddListener(OnThrowingBombDown);
     }
 
     void Awake()
@@ -88,8 +98,18 @@ public class PlayerController : MonoBehaviour
         cooldownTimerBigBomb = 0f;
 
         bomb.Owner = player;
+
+        // audio
+        audioSource.clip = wholeNoot;
+        audioSource.Play();
     }
     
+    private void OnThrowingBombDown()
+    {
+        // audio
+        audioSource.clip = firstNoot;
+        audioSource.Play();
+    }
     private void OnThrowingBombUp()
     {
         if (cooldownTimerThrowingBomb < bombSettings.cooldownThrowingBomb)
@@ -103,6 +123,10 @@ public class PlayerController : MonoBehaviour
         cooldownTimerThrowingBomb = 0f;
 
         bomb.Owner = player;
+
+        // audio
+        audioSource.clip = secondNoot;
+        audioSource.Play();
     }
 
     private void OnStartDown()
