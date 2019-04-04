@@ -180,7 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6906a06dc8aabf4cb329d5da8cdeb38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  scoreManager: {fileID: 0}
+  speed: 8
   bombSettings: {fileID: 11400000, guid: dce00341e9cd01047b7c86ce2d59565f, type: 2}
   input: {fileID: 0}
 --- !u!114 &7071509561252018543
@@ -476,7 +477,7 @@ Animator:
   m_GameObject: {fileID: 6816307887987589549}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 6ff276283ae6feb498f91d9dfb516f57, type: 3}
-  m_Controller: {fileID: 9100000, guid: 7ff0cf27ed8e9684b9bdd381bab1f846, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
