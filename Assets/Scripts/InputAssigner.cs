@@ -47,6 +47,9 @@ public class InputAssigner : MonoBehaviour
     
     private void ListenForJoystickConfirm()
     {
+        if (indexController.Count == 0)
+            return;
+
         for (int i = indexController.Count - 1; i >= 0; i--)
         {
             int controllerNumber = indexController[i];
@@ -54,7 +57,18 @@ public class InputAssigner : MonoBehaviour
             if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), button)))
             {
                 SpawnPlayer(CreateJoystickInput(controllerNumber));
-
+                indexController.RemoveAt(i);
+            }
+            button = "Joystick" + controllerNumber + "Button9";
+            if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), button)))
+            {
+                SpawnPlayer(CreateJoyconInput(controllerNumber, true));
+                indexController.RemoveAt(i);
+            }
+            button = "Joystick" + controllerNumber + "Button8";
+            if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), button)))
+            {
+                SpawnPlayer(CreateJoyconInput(controllerNumber, false));
                 indexController.RemoveAt(i);
             }
         }
@@ -81,6 +95,15 @@ public class InputAssigner : MonoBehaviour
         JoystickInput ji = ScriptableObject.CreateInstance<JoystickInput>();
 
         ji.SetControllerNumber(controllerId);
+
+        return ji;
+    }
+
+    private JoyconInput CreateJoyconInput(int controllerId, bool usesPlus)
+    {
+        JoyconInput ji = ScriptableObject.CreateInstance<JoyconInput>();
+
+        ji.SetControllerNumber(controllerId, usesPlus);
 
         return ji;
     }
