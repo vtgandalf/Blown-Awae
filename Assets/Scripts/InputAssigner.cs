@@ -111,7 +111,6 @@ public class InputAssigner : MonoBehaviour
     private void SpawnPlayer(VirtualInput vi)
     {
         Vector3 spawnPoint = spawnPoints.GetRandomUnusedSpawnPoint();
-        Debug.Log(spawnPoint);
         Player player = Instantiate(playerPrefab, spawnPoint, Quaternion.identity);
 
         //player.playerColor = Random.ColorHSV(0f, 1f);

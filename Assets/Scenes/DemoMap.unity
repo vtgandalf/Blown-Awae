@@ -2741,8 +2741,9 @@ GameObject:
   - component: {fileID: 1599380357}
   - component: {fileID: 1599380356}
   - component: {fileID: 1599380355}
+  - component: {fileID: 1599380358}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2782,7 +2783,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 30
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2812,6 +2813,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 57.8, y: 0, z: 0}
+--- !u!114 &1599380358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599380354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b908837e6c53c24e94c05c2a93565a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dampTime: 0.2
+  zoomOffset: -25
+  minZoom: 32
+  maxZoom: 9
+  offset: {x: 0, y: 25.7, z: -17}
+  players: {fileID: 11400000, guid: 62bcfe4ac3614a9408e9b65c22ecb0de, type: 2}
 --- !u!1001 &1642946983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3581,7 +3600,7 @@ PrefabInstance:
     - target: {fileID: 8636193493276788020, guid: a1854b4b313344447ba0ce1ceb9040bb,
         type: 3}
       propertyPath: timeLeft
-      value: 20
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8636193493276788020, guid: a1854b4b313344447ba0ce1ceb9040bb,
         type: 3}
