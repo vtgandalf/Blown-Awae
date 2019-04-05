@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    // SOUNDS
+
+    [SerializeField] private AudioPlayer AudioPlayer;
+
+    // END SOUNDS
     private Player player;
     public ScoreManager scoreManager;
     
@@ -33,12 +38,14 @@ public class PlayerController : MonoBehaviour
             input.OnBigBombDown.RemoveAllListeners();
             input.OnThrowingBombUp.RemoveAllListeners();
             input.OnStartDown.RemoveAllListeners();
+            input.OnThrowingBombDown.RemoveAllListeners();
         }
 
         input = vi;
         input.OnBigBombDown.AddListener(OnBigBombDown);
         input.OnThrowingBombUp.AddListener(OnThrowingBombUp);
         input.OnStartDown.AddListener(OnStartDown);
+        input.OnThrowingBombDown.AddListener(OnThrowingBombDown);
     }
 
     void Awake()
@@ -88,8 +95,15 @@ public class PlayerController : MonoBehaviour
         cooldownTimerBigBomb = 0f;
 
         bomb.Owner = player;
+
+        // audio
+        //AudioPlayer.PlaySound(0);
     }
     
+    private void OnThrowingBombDown()
+    {
+        // audio
+    }
     private void OnThrowingBombUp()
     {
         if (cooldownTimerThrowingBomb < bombSettings.cooldownThrowingBomb)
@@ -103,6 +117,9 @@ public class PlayerController : MonoBehaviour
         cooldownTimerThrowingBomb = 0f;
 
         bomb.Owner = player;
+
+        // audio
+        AudioPlayer.PlaySound(1);
     }
 
     private void OnStartDown()
@@ -184,6 +201,15 @@ public class PlayerController : MonoBehaviour
             physicMaterial.staticFriction = 1f;
             physicMaterial.dynamicFriction = 1f;
         }
+    }
+
+    public void PlayThrowingExplosion()
+    {
+        AudioPlayer.PlaySound(2);
+    }
+    public void PlayBigExplosion()
+    {
+        AudioPlayer.PlaySound(3);
     }
 
 }

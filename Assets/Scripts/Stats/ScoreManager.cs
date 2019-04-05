@@ -10,6 +10,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private PlayerRuntimeSet currentPlayers;
     [SerializeField] private SpawnPointRuntimeSet spawnPoints;
 
+    [SerializeField] private AudioPlayer AudioPlayer;
+
     public bool RounHasEnded { get; set; }
 
     void Awake ()
@@ -58,6 +60,7 @@ public class ScoreManager : MonoBehaviour
 
     private void AddKill(Player killedPlayer)
     {
+        AudioPlayer.PlayRandomSound();
         killedPlayer.StatTracker.AddStat(new CountStat(killedPlayer, "deaths", 1));
         killedPlayer.SetCrown(false);
 

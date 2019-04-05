@@ -20,6 +20,7 @@ public class ThrowingBomb : Bomb
     {
         if (collision.gameObject.layer == 9)
         {
+            AudioPlayer.PlaySound(0);
             bounces++;
             if (bounces >= maxBounces)
             {
