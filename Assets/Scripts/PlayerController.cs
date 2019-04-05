@@ -7,10 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     // SOUNDS
 
-    [SerializeField] private AudioClip firstNoot;
-    [SerializeField] private AudioClip secondNoot;
-    [SerializeField] private AudioClip wholeNoot;
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioPlayer AudioPlayer;
 
     // END SOUNDS
     private Player player;
@@ -100,15 +97,12 @@ public class PlayerController : MonoBehaviour
         bomb.Owner = player;
 
         // audio
-        audioSource.clip = wholeNoot;
-        audioSource.Play();
+        AudioPlayer.PlaySound(0);
     }
     
     private void OnThrowingBombDown()
     {
         // audio
-        audioSource.clip = firstNoot;
-        audioSource.Play();
     }
     private void OnThrowingBombUp()
     {
@@ -125,8 +119,7 @@ public class PlayerController : MonoBehaviour
         bomb.Owner = player;
 
         // audio
-        audioSource.clip = secondNoot;
-        audioSource.Play();
+        AudioPlayer.PlaySound(1);
     }
 
     private void OnStartDown()

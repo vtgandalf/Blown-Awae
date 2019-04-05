@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 7071509561252018543}
   - component: {fileID: 4957500279746898554}
   - component: {fileID: 8134841017159708953}
+  - component: {fileID: 5101260249527085977}
   m_Layer: 0
   m_Name: PlayerPinguin
   m_TagString: Untagged
@@ -181,10 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6906a06dc8aabf4cb329d5da8cdeb38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstNoot: {fileID: 8300000, guid: af68d9a5e4bd9e247a8677d327226e88, type: 3}
-  secondNoot: {fileID: 8300000, guid: affbf43c1eefdb147a93c66c55becd82, type: 3}
-  wholeNoot: {fileID: 8300000, guid: 0dd28ab66514cb64e9253eb4497a6b88, type: 3}
-  audioSource: {fileID: 8134841017159708953}
+  AudioPlayer: {fileID: 5101260249527085977}
   scoreManager: {fileID: 0}
   speed: 8
   bombSettings: {fileID: 11400000, guid: dce00341e9cd01047b7c86ce2d59565f, type: 2}
@@ -320,6 +318,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5101260249527085977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3293753780556650184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0974588b1a949b047b19a7469901170c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioSource: {fileID: 8134841017159708953}
+  AudioClips:
+  - {fileID: 8300000, guid: 610754b6a3859884986da6e495d4f580, type: 3}
+  - {fileID: 8300000, guid: a7aafd4ce6b4fe64598db1e12e4e6f85, type: 3}
 --- !u!1 &3714884513478783107
 GameObject:
   m_ObjectHideFlags: 0
