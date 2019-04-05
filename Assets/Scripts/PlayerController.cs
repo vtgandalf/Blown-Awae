@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
         bomb.Owner = player;
 
         // audio
-        AudioPlayer.PlaySound(0);
+        //AudioPlayer.PlaySound(0);
     }
     
     private void OnThrowingBombDown()
@@ -201,6 +201,15 @@ public class PlayerController : MonoBehaviour
             physicMaterial.staticFriction = 1f;
             physicMaterial.dynamicFriction = 1f;
         }
+    }
+
+    public void PlayThrowingExplosion()
+    {
+        AudioPlayer.PlaySound(2);
+    }
+    public void PlayBigExplosion()
+    {
+        AudioPlayer.PlaySound(3);
     }
 
 }

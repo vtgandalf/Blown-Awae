@@ -32,5 +32,6 @@ public class AudioPlayer : MonoBehaviour
     {
         AudioSource.clip = AudioClips[rndm.Next(0,AudioClips.Count)];
         AudioSource.Play();
+        Debug.Log("Play");
     }
 }

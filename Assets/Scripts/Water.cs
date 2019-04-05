@@ -18,16 +18,16 @@ public class Water : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        Debug.Log(other.gameObject);
-        if (other.gameObject.layer == 10)
+        if(!other.isTrigger) 
         {
-            Debug.Log("player");
-            AudioPlayer.PlaySound(0);
-        }
-        if (other.gameObject.layer == 11)
-        {
-            Debug.Log("bomb");
-            AudioPlayer.PlaySound(1);
+            if (other.gameObject.layer == 10)
+            {
+                AudioPlayer.PlaySound(0);
+            }
+            if (other.gameObject.layer == 11)
+            {
+                AudioPlayer.PlaySound(1);
+            }
         }
     }
 }
