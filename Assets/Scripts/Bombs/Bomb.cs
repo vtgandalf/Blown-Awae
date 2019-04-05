@@ -7,6 +7,7 @@ public class Bomb : MonoBehaviour
     public BombData data;
     public Player Owner { get; set; }
     public BombEffect bombEffect;
+    [SerializeField] protected CameraShake CameraShake;
     [SerializeField] protected AudioPlayer AudioPlayer;
 
     private float timeActive = 0f;
@@ -38,8 +39,12 @@ public class Bomb : MonoBehaviour
 
     protected virtual void Explode()
     {
-        if (this.GetType() == typeof(Bomb)) Owner.gameObject.GetComponent<PlayerController>().PlayBigExplosion();
-        else Owner.gameObject.GetComponent<PlayerController>().PlayThrowingExplosion();
+        CameraShake.CameraShakeEvent.Invoke(2f, data.force / 3f);
+
+        if (GetType() == typeof(ThrowingBomb))
+            Owner.gameObject.GetComponent<PlayerController>().PlayThrowingExplosion();
+        else Owner.gameObject.GetComponent<PlayerController>().PlayBigExplosion();
+
         GameObject effect = Instantiate(data.explosionEffect, transform.position, transform.rotation);
         Destroy(effect, 1f);
 
@@ -71,6 +76,7 @@ public class Bomb : MonoBehaviour
 
         Destroy(gameObject);
     }
+
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.layer == 9)
         {

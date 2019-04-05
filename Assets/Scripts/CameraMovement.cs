@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
@@ -13,14 +11,19 @@ public class CameraMovement : MonoBehaviour
     public Vector3 offset = Vector3.zero;
     [SerializeField] private PlayerRuntimeSet players;
 
-    private Camera camera;
+    private Transform cameraTransform;
     private float zoomSpeed;
     private Vector3 moveVelocity;
     private Vector3 targetPos;
 
+    [SerializeField] private CameraShake cameraShake;
+    private bool isShaking = false;
+    private float shakeTimeElapses;
+
     private void Awake()
     {
-        camera = GetComponent<Camera>();
+        cameraTransform = GetComponentInChildren<Camera>().transform;
+        cameraShake.CameraShakeEvent.AddListener(StartShake);
     }
 
     private void FixedUpdate()
@@ -73,5 +76,33 @@ public class CameraMovement : MonoBehaviour
         }
 
         return bounds.size.x > bounds.size.z ? bounds.size.x : bounds.size.z;
+    }
+
+    private void StartShake(float duration, float magnitude)
+    {
+        if (isShaking)
+            StartCoroutine(Shake(duration, magnitude));
+    }
+
+    private IEnumerator Shake(float duration, float magnitude)
+    {
+        isShaking = true;
+
+        Vector3 originalPos = cameraTransform.position;
+
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            cameraTransform.position = originalPos + Random.insideUnitSphere * magnitude;
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        cameraTransform.position = originalPos;
+
+        isShaking = false;
     }
 }
