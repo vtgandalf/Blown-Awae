@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject crown;
     [SerializeField] private Renderer rend;
     [SerializeField] private PlayerRuntimeSet playerList;
+    public int ControllerID { get; set; }
 
     public Player GetLastPlayerHitBy()
     {

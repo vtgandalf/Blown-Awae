@@ -37,6 +37,8 @@ public class Tile : MonoBehaviour
         rb.isKinematic = false;
         falling = true;
         tileList.RemoveItem(this);
+        StartCoroutine(LateDeactivate(5));
+        
     }
 
     public void ChangeColor(Color tileColor)
@@ -48,4 +50,10 @@ public class Tile : MonoBehaviour
     {
         this.slippery = slippery;
     }
+
+    IEnumerator LateDeactivate(int sec)
+     {
+        yield return new WaitForSeconds(sec);
+        gameObject.SetActive(false);
+     }
 }
