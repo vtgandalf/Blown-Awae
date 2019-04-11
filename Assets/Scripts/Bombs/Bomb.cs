@@ -39,7 +39,7 @@ public class Bomb : MonoBehaviour
 
     protected virtual void Explode()
     {
-        CameraShake.CameraShakeEvent.Invoke(2f, data.force / 3f);
+        CameraShake.CameraShakeEvent.Invoke(data.shakeDuration, data.shakeMagnitude);
 
         if (GetType() == typeof(ThrowingBomb))
             Owner.gameObject.GetComponent<PlayerController>().PlayThrowingExplosion();

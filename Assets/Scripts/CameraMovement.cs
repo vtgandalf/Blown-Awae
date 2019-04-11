@@ -80,7 +80,7 @@ public class CameraMovement : MonoBehaviour
 
     private void StartShake(float duration, float magnitude)
     {
-        if (isShaking)
+        if (!isShaking)
             StartCoroutine(Shake(duration, magnitude));
     }
 
@@ -88,20 +88,21 @@ public class CameraMovement : MonoBehaviour
     {
         isShaking = true;
 
-        Vector3 originalPos = cameraTransform.position;
+        Vector3 originalPos = cameraTransform.localPosition;
 
         float elapsed = 0f;
 
         while (elapsed < duration)
         {
-            cameraTransform.position = originalPos + Random.insideUnitSphere * magnitude;
+            cameraTransform.localPosition = originalPos + Random.insideUnitSphere * magnitude;
+            Debug.Log("shaking" + elapsed + "/" + duration);
 
             elapsed += Time.deltaTime;
 
             yield return null;
         }
 
-        cameraTransform.position = originalPos;
+        cameraTransform.localPosition = originalPos;
 
         isShaking = false;
     }
