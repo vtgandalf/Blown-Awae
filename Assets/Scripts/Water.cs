@@ -20,14 +20,12 @@ public class Water : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(!other.isTrigger) 
         {
-            if (other.gameObject.layer == 10)
-            {
-                AudioPlayer.PlaySound(0);
-            }
-            if (other.gameObject.layer == 11)
-            {
-                AudioPlayer.PlaySound(1);
-            }
+            if (other.gameObject.layer == 10) AudioPlayer.PlaySound(0);
+            if (other.gameObject.layer == 11) AudioPlayer.PlaySound(1);
         }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if(!other.isTrigger) if(other.gameObject.layer == 9) AudioPlayer.PlaySound(1);
     }
 }

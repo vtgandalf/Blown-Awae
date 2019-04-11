@@ -8,6 +8,7 @@ public class InputAssigner : MonoBehaviour
     [SerializeField] private List<KeyboardInput> keyboardInputs;
     [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private SpawnPointRuntimeSet spawnPoints;
+    [SerializeField] private PlayerSpawner playerSpawner;
     private List<int> indexController;
 
     //public void SetupKeyboardListeners()
@@ -56,19 +57,19 @@ public class InputAssigner : MonoBehaviour
             string button = "Joystick" + controllerNumber + "Button7";
             if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), button)))
             {
-                SpawnPlayer(CreateJoystickInput(controllerNumber));
+                SpawnPlayer(CreateJoystickInput(controllerNumber), controllerNumber);
                 indexController.RemoveAt(i);
             }
             button = "Joystick" + controllerNumber + "Button9";
             if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), button)))
             {
-                SpawnPlayer(CreateJoyconInput(controllerNumber, true));
+                SpawnPlayer(CreateJoyconInput(controllerNumber, true), controllerNumber);
                 indexController.RemoveAt(i);
             }
             button = "Joystick" + controllerNumber + "Button8";
             if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), button)))
             {
-                SpawnPlayer(CreateJoyconInput(controllerNumber, false));
+                SpawnPlayer(CreateJoyconInput(controllerNumber, false), controllerNumber);
                 indexController.RemoveAt(i);
             }
         }
@@ -83,8 +84,7 @@ public class InputAssigner : MonoBehaviour
         {
             if (Input.GetKeyDown(keyboardInputs[i].throwingBomb))
             {
-                SpawnPlayer(keyboardInputs[i]);
-
+                SpawnPlayer(keyboardInputs[i], 20);
                 keyboardInputs.RemoveAt(i);
             }
         }
@@ -108,13 +108,15 @@ public class InputAssigner : MonoBehaviour
         return ji;
     }
 
-    private void SpawnPlayer(VirtualInput vi)
+    private void SpawnPlayer(VirtualInput vi, int controllerId)
     {
         Vector3 spawnPoint = spawnPoints.GetRandomUnusedSpawnPoint();
         Player player = Instantiate(playerPrefab, spawnPoint, Quaternion.identity);
 
         //player.playerColor = Random.ColorHSV(0f, 1f);
-        player.SetColor(Random.ColorHSV(0f, 1f));
+        //player.SetColor(Random.ColorHSV(0f, 1f));
+        player.ControllerID = controllerId;
+        playerSpawner.SetUpPlayerColor(player, player.ControllerID);
         player.SetVirtualInput(vi);
         player.transform.GetChild(2).GetComponent<Canvas>().worldCamera = Camera.main;
         player.GetComponent<PlayerController>().scoreManager = scoreManager;

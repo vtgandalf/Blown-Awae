@@ -8,7 +8,6 @@ public class MapBigCollider : MonoBehaviour
 
     private void OnTriggerExit(Collider other) {
         Player player = other.gameObject.GetComponent<Player>();
-
         other.gameObject.SetActive(false);
     }
 }

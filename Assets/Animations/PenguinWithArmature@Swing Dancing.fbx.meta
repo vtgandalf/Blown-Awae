@@ -1,119 +1,55 @@
 fileFormatVersion: 2
-guid: 6ff276283ae6feb498f91d9dfb516f57
+guid: 9bd4cb4bb6ccd994c8b260ad037a785c
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Armature
-    100002: Bone
-    100004: Bone.001
-    100006: Bone.002
-    100008: Bone.003
-    100010: Bone.003_end
-    100012: Bone.004
-    100014: Bone.005
-    100016: Bone.006
-    100018: Bone.006_end
-    100020: Bone.007
-    100022: Bone.008
-    100024: Bone.008_end
-    100026: Bone.009
-    100028: Bone.010
-    100030: Bone.010_end
-    100032: Bone.011
-    100034: Bone.012
-    100036: Bone.012_end
-    100038: Bone.013
-    100040: Bone.013_end
-    100042: Penguin
-    100044: //RootNode
-    100046: PenguinWithArm
-    100048: arm_left
-    100050: arm_left_end
-    100052: arm_right
-    100054: arm_right_end
-    100056: head
-    100058: head_end
-    100060: hips_left
-    100062: hips_right
-    100064: leg_left
-    100066: leg_left_end
-    100068: leg_right
-    100070: leg_right_end
-    100072: neck
-    100074: shoulder_left
-    100076: shoulder_right
-    100078: spine
-    100080: upper_arm_left
-    100082: upper_arm_right
-    100084: hand_left
-    100086: hand_left_end
-    100088: hand_right
-    100090: hand_right_end
-    100092: leg_low_left
-    100094: leg_low_left_end
-    100096: leg_low_right
-    100098: leg_low_right_end
-    400000: Armature
-    400002: Bone
-    400004: Bone.001
-    400006: Bone.002
-    400008: Bone.003
-    400010: Bone.003_end
-    400012: Bone.004
-    400014: Bone.005
-    400016: Bone.006
-    400018: Bone.006_end
-    400020: Bone.007
-    400022: Bone.008
-    400024: Bone.008_end
-    400026: Bone.009
-    400028: Bone.010
-    400030: Bone.010_end
-    400032: Bone.011
-    400034: Bone.012
-    400036: Bone.012_end
-    400038: Bone.013
-    400040: Bone.013_end
-    400042: Penguin
-    400044: //RootNode
-    400046: PenguinWithArm
-    400048: arm_left
-    400050: arm_left_end
-    400052: arm_right
-    400054: arm_right_end
-    400056: head
-    400058: head_end
-    400060: hips_left
-    400062: hips_right
-    400064: leg_left
-    400066: leg_left_end
-    400068: leg_right
-    400070: leg_right_end
-    400072: neck
-    400074: shoulder_left
-    400076: shoulder_right
-    400078: spine
-    400080: upper_arm_left
-    400082: upper_arm_right
-    400084: hand_left
-    400086: hand_left_end
-    400088: hand_right
-    400090: hand_right_end
-    400092: leg_low_left
-    400094: leg_low_left_end
-    400096: leg_low_right
-    400098: leg_low_right_end
-    2100000: Player
-    2100002: beak
-    2100004: whit
-    2100006: black
-    2100008: feet
-    4300000: Penguin
-    4300002: PenguinWithArm
+    100000: arm_left
+    100002: arm_left_end
+    100004: arm_right
+    100006: arm_right_end
+    100008: head
+    100010: head_end
+    100012: hips_left
+    100014: hips_right
+    100016: leg_left
+    100018: leg_low_left
+    100020: leg_low_left_end
+    100022: leg_low_right
+    100024: leg_low_right_end
+    100026: leg_right
+    100028: neck
+    100030: //RootNode
+    100032: shoulder_left
+    100034: shoulder_right
+    100036: spine
+    100038: upper_arm_left
+    100040: upper_arm_right
+    100042: Armature
+    400000: arm_left
+    400002: arm_left_end
+    400004: arm_right
+    400006: arm_right_end
+    400008: head
+    400010: head_end
+    400012: hips_left
+    400014: hips_right
+    400016: leg_left
+    400018: leg_low_left
+    400020: leg_low_left_end
+    400022: leg_low_right
+    400024: leg_low_right_end
+    400026: leg_right
+    400028: neck
+    400030: //RootNode
+    400032: shoulder_left
+    400034: shoulder_right
+    400036: spine
+    400038: upper_arm_left
+    400040: upper_arm_right
+    400042: Armature
+    7400000: mixamo.com
     9500000: //RootNode
     11100000: //RootNode
-    13700000: Penguin
-    13700002: PenguinWithArm
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
@@ -131,10 +67,23 @@ ModelImporter:
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
-    animationRetargetingWarnings: 
-    animationDoRetargetingWarnings: 0
+    animationRetargetingWarnings: "\nRetargeting quality report for clip 'mixamo.com':\n\tLeftLowerLeg
+      average position error 138.7 mm and maximum position error 612.1 mm at time
+      1: 9 (52.7%) Frame 39\n\tLeftFoot average position error 245.5 mm and maximum
+      position error 1471.4 mm at time 1: 9 (52.7%) Frame 39\n\tRightLowerLeg average
+      position error 163.1 mm and maximum position error 540.4 mm at time 0:18 (24.3%)
+      Frame 18\n\tRightFoot average position error 348.8 mm and maximum position error
+      1506.6 mm at time 0:19 (25.7%) Frame 19\n\tLeftLowerArm average position error
+      8.6 mm and maximum position error 30.4 mm at time 1: 2 (43.2%) Frame 32\n\tRightLowerArm
+      average position error 11.9 mm and maximum position error 68.4 mm at time 1:15
+      (60.8%) Frame 45\n\tRightHand average position error 0.6 mm and maximum position
+      error 1.5 mm at time 0:12 (16.2%) Frame 12\n\tLeftFoot average orientation error
+      0.3 deg and maximum orientation error 2.0 deg at time 1:10 (54.1%) Frame 40\n\tRightFoot
+      average orientation error 0.4 deg and maximum orientation error 3.7 deg at time
+      2: 6 (89.2%) Frame 66\n"
+    animationDoRetargetingWarnings: 1
     importAnimatedCustomProperties: 0
-    importConstraints: 0
+    importConstraints: 1
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -178,7 +127,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   importAnimation: 1
-  copyAvatar: 0
+  copyAvatar: 1
   humanDescription:
     serializedVersion: 2
     human:
@@ -469,7 +418,8 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 6ff276283ae6feb498f91d9dfb516f57,
+    type: 3}
   animationType: 3
   humanoidOversampling: 1
   additionalBone: 0

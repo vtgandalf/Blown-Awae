@@ -24,7 +24,8 @@ public class SupplyCrate : MonoBehaviour
         if (parent != null)
             tileList.SetUsable(parent);
         spawner.SpawnRandomPowerup(transform.position);
-        GetComponent<Collider>().enabled = false;
-        Destroy(gameObject, 5f);
+        this.gameObject.SetActive(false);
+        //GetComponent<Collider>().enabled = false;
+        //Destroy(gameObject, 5f);
     }
 }

@@ -11,6 +11,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private SpawnPointRuntimeSet spawnPoints;
 
     [SerializeField] private AudioPlayer AudioPlayer;
+    [SerializeField] private PlayerSpawner playerSpawner;
 
     public bool RounHasEnded { get; set; }
 
@@ -45,6 +46,7 @@ public class ScoreManager : MonoBehaviour
             // there is a winner
             WeHaveAWinner(currentPlayers.Items[0]);
             currentPlayers.Items[0].SetCrown(true);
+            playerSpawner.SetWinner( currentPlayers.Items[0].ControllerID);
             //StartCoroutine(ResetRound()); // Disabled for Demo
         }
         else if (currentPlayers.Items.Count == 0)
