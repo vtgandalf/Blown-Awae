@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chickenPrefab: {fileID: 1128349252190978048, guid: 51230e801736e5346b65242d6c7c02a9,
     type: 3}
-  chickensToSpawn: 25
-  spawnInterval: 0.2
+  chickensToSpawn: 10
+  spawnInterval: 0.5
   spawnDistance: 5
-  chickenSpeed: 15
-  chickenForce: 3
+  chickenSpeed: 17
+  chickenForce: 4.5

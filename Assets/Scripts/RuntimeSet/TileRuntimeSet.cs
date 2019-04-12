@@ -5,51 +5,20 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "RuntimeSet/Tile")]
 public class TileRuntimeSet : RuntimeSet<Tile>
 {
-    [SerializeField]private List<Tile> unusedTiles;
-    private void OnEnable()
-    {
-        ResetTiles();
-        OnAddItem.AddListener(SetUsable);
-        OnRemoveItem.AddListener(SetUnusable);
-    }
-
-    private void OnDisable()
-    {
-        OnAddItem.RemoveAllListeners();
-        OnRemoveItem.RemoveAllListeners();
-    }
-
-    public void SetUsable(Tile tile)
-    {
-        if (Items.Contains(tile) && !unusedTiles.Contains(tile))
-        {
-            unusedTiles.Add(tile);
-        }
-    }
-
-    public void SetUnusable(Tile tile)
-    {
-        if (unusedTiles.Contains(tile))
-        {
-            unusedTiles.Remove(tile);
-        }
-    }
-
-    public void ResetTiles()
-    {
-        Debug.Log("list created");
-        unusedTiles = new List<Tile>(Items);
-    }
-
     public Tile GetRandomUnusedTile()
     {
-        Debug.Log(unusedTiles.Count);
-        if (unusedTiles.Count == 0)
+        Debug.Log(Items.Count);
+        if (Items.Count == 0)
             return null;
 
-        Tile tile = unusedTiles[Random.Range(0, unusedTiles.Count - 1)];
-        Debug.Log(tile);
-        SetUnusable(tile);
-        return tile;
+        List<Tile> filteredList = new List<Tile>();
+        foreach (Tile tile in Items)
+        {
+            if (tile.Empty)
+                filteredList.Add(tile);
+        }
+
+        Tile randomTile = filteredList[Random.Range(0, filteredList.Count - 1)];
+        return randomTile;
     }
 }

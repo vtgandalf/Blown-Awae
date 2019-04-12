@@ -95,7 +95,6 @@ public class CameraMovement : MonoBehaviour
         while (elapsed < duration)
         {
             cameraTransform.localPosition = originalPos + Random.insideUnitSphere * magnitude;
-            Debug.Log("shaking" + elapsed + "/" + duration);
 
             elapsed += Time.deltaTime;
 

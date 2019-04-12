@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    [SerializeField] private TileRuntimeSet tileList;
+    public static List<Tile> usableTiles = new List<Tile>();
+
+    public bool Empty;
 
     private Rigidbody rb;
     public bool slippery = false;
@@ -16,11 +18,7 @@ public class Tile : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-    }
-
-    private void OnEnable()
-    {
-        tileList.AddItem(this);
+        SetUsable(true);
     }
 
     private void FixedUpdate()
@@ -36,9 +34,8 @@ public class Tile : MonoBehaviour
         transform.parent = null;
         rb.isKinematic = false;
         falling = true;
-        tileList.RemoveItem(this);
-        StartCoroutine(LateDeactivate(5));
-        
+        SetUsable(false);
+        StartCoroutine(LateDeactivate(5));        
     }
 
     public void ChangeColor(Color tileColor)
@@ -52,8 +49,15 @@ public class Tile : MonoBehaviour
     }
 
     IEnumerator LateDeactivate(int sec)
-     {
+    {
         yield return new WaitForSeconds(sec);
         gameObject.SetActive(false);
-     }
+    }
+
+    public void SetUsable(bool usable)
+    {
+        if (gameObject.activeSelf && usable && !usableTiles.Contains(this))
+            usableTiles.Add(this);
+        else if (usableTiles.Contains(this)) usableTiles.Remove(this);
+    }
 }

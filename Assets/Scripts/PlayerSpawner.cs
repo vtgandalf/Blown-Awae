@@ -13,7 +13,6 @@ public class PlayerSpawner : ScriptableObject
 
     private void OnEnable() {
         if(listOfSettings == null) listOfSettings = new List<object[]>();
-        Debug.Log(listOfSettings);
         playersNumber = 0;
     }
 
