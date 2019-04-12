@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: de3d7f0d7cd0d7d4c9cb135123ebf90a, type: 2}
-  bombEffect: {fileID: 11400000, guid: 3fe0e2074620dbe4190b49c1b3b169e5, type: 2}
+  bombEffect: {fileID: 0}
   CameraShake: {fileID: 11400000, guid: 99de9710d9ebe1648ad8742f67d277f3, type: 2}
   AudioPlayer: {fileID: 6445716944437962188}
 --- !u!114 &4091208623848064217
@@ -275,14 +275,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9148845786626638036}
     m_Modifications:
-    - target: {fileID: 100002, guid: 21543d2b66928224f8a9536ff3811682, type: 3}
-      propertyPath: m_Name
-      value: Projector
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 21543d2b66928224f8a9536ff3811682, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 21543d2b66928224f8a9536ff3811682, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -326,6 +318,14 @@ PrefabInstance:
     - target: {fileID: 400002, guid: 21543d2b66928224f8a9536ff3811682, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 21543d2b66928224f8a9536ff3811682, type: 3}
+      propertyPath: m_Name
+      value: Projector
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 21543d2b66928224f8a9536ff3811682, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 11900000, guid: 21543d2b66928224f8a9536ff3811682, type: 3}
       propertyPath: m_Orthographic

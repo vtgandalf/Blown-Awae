@@ -409,7 +409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &205135413
 Transform:
   m_ObjectHideFlags: 0
@@ -1934,17 +1934,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1066774701}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 932a2de1595b6cd48ae9d9f261779279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scPrefab: {fileID: 4253223978175885001, guid: f90b91343cda16248b3f873704366de9,
     type: 3}
-  activeTiles: {fileID: 11400000, guid: 447dd4f49ee660349abf58abff34969f, type: 2}
+  spawning: 1
   yOffset: 1
-  spawnInterval: 1
-  spawning: 0
+  spawnInterval: 5
 --- !u!82 &1066774705
 AudioSource:
   m_ObjectHideFlags: 0

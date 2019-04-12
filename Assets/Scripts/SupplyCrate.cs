@@ -9,23 +9,24 @@ public class SupplyCrate : MonoBehaviour
 
     private Tile parent;
 
-    public void Awake()
+    public void SetParent(Tile parent)
     {
-        if (transform.parent != null)
+        if (this.parent == null)
         {
-            Tile tile = transform.parent.GetComponent<Tile>();
-            if (tile != null)
-                parent = tile;
+            parent.Empty = false;
+            parent.SetUsable(false);
+            this.parent = parent;
         }
     }
 
     public void OnExplode()
     {
         if (parent != null)
-            tileList.SetUsable(parent);
+        {
+            parent.Empty = true;
+            parent.SetUsable(true);
+        }
         spawner.SpawnRandomPowerup(transform.position);
-        this.gameObject.SetActive(false);
-        //GetComponent<Collider>().enabled = false;
-        //Destroy(gameObject, 5f);
+        gameObject.SetActive(false);
     }
 }
