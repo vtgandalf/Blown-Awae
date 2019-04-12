@@ -136,12 +136,43 @@ ModelImporter:
     2100008: feet
     4300000: Penguin
     4300002: PenguinWithArm
+    7400000: Armature|ArmatureAction
+    7400002: Armature|throwing bomb
+    7400004: Armature|throwingBombAction
+    7400006: Armature|throwingBombAnticipation
+    7400008: Armature|walking
+    7400010: Armature|throwingBombAction (1)
     9500000: //RootNode
     11100000: //RootNode
     13700000: Penguin
     13700002: PenguinWithArm
     2186277476908879412: ImportLogs
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Player
+    second: {fileID: 2100000, guid: 1db2b76760a737144a4928cabb1c49d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: beak
+    second: {fileID: 2100000, guid: a5f6ee8c11fcd4944a1ff0b748b4a7ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black
+    second: {fileID: 2100000, guid: 38d834b19b359244b8ca3b340caf86cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: feet
+    second: {fileID: 2100000, guid: e7fdc759a9aebae4395433bd2dd1bdf2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: whit
+    second: {fileID: 2100000, guid: 8e000af1f511f5744a2bf56c01d48b9a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -151,7 +182,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
-    optimizeGameObjects: 0
+    optimizeGameObjects: 1
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -168,7 +199,91 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|throwingBombAction
+      takeName: Armature|throwingBombAction
+      firstFrame: 0
+      lastFrame: 10
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|walking
+      takeName: Armature|walking
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|throwingBombAnticipation
+      takeName: Armature|throwingBombAnticipation
+      firstFrame: 0
+      lastFrame: 10
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -320,6 +435,14 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
+    - boneName: arm_low_right_end
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
     - boneName: leg_right_low_end
       humanName: RightFoot
       limit:
@@ -330,14 +453,6 @@ ModelImporter:
         modified: 0
     - boneName: leg_left_low_end
       humanName: LeftFoot
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: arm_low_right_end
-      humanName: RightHand
       limit:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
@@ -358,25 +473,30 @@ ModelImporter:
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
+    - name: PenguinWithArm
+      parentName: PenguinWithArmature(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
     - name: Armature
       parentName: PenguinWithArmature(Clone)
-      position: {x: -0.002419509, y: 0.0038076304, z: 0.054941483}
+      position: {x: 0.043925546, y: 0.98691434, z: 0.054941483}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
       scale: {x: 100, y: 100, z: 100}
     - name: spine
       parentName: Armature
       position: {x: -0, y: 0, z: -0.0002806066}
-      rotation: {x: -0.04336579, y: 0.7203485, z: 0.6903472, w: -0.05136445}
+      rotation: {x: -0.043365814, y: 0.7203485, z: 0.6903472, w: -0.051364467}
       scale: {x: 0.99999994, y: 1.0000002, z: 1}
     - name: leg_left
       parentName: spine
       position: {x: 0.004706964, y: -0.004480978, z: 0.0008291246}
-      rotation: {x: 0.7620532, y: 0.00406106, z: 0.64333475, w: -0.07334084}
-      scale: {x: 0.9999993, y: 1, z: 0.9999992}
+      rotation: {x: 0.7585701, y: -0.013376075, z: 0.64567524, w: -0.086579785}
+      scale: {x: 0.9999992, y: 0.99999994, z: 0.9999993}
     - name: leg_left_low
       parentName: leg_left
-      position: {x: 1.4901161e-10, y: 0.002106767, z: 3.632158e-10}
-      rotation: {x: -0.09795795, y: -0.76502126, z: 0.052423235, w: 0.63434887}
+      position: {x: 1.11758706e-10, y: 0.0021067667, z: 1.3969838e-10}
+      rotation: {x: -0.097957954, y: -0.76502115, z: 0.052423205, w: 0.63434905}
       scale: {x: 1, y: 1.0000001, z: 1.0000001}
     - name: leg_left_low_end
       parentName: leg_left_low
@@ -386,22 +506,22 @@ ModelImporter:
     - name: leg_right
       parentName: spine
       position: {x: -0.0039619594, y: -0.004407112, z: -0.00034202932}
-      rotation: {x: 0.7198291, y: -0.14072263, z: -0.6733104, w: -0.093254186}
-      scale: {x: 1.0000026, y: 1.0000002, z: 1.0000001}
+      rotation: {x: 0.72732085, y: -0.11373417, z: -0.6739685, w: -0.061930947}
+      scale: {x: 1.0000027, y: 1.0000001, z: 1}
     - name: leg_right_low
       parentName: leg_right
-      position: {x: -3.7252902e-11, y: 0.00236959, z: -2.5262123e-10}
-      rotation: {x: -0.097696155, y: -0.6129167, z: 0.085043505, w: 0.7794589}
-      scale: {x: 1, y: 1.0000002, z: 1}
+      position: {x: 1.11758706e-10, y: 0.0023695906, z: -7.334165e-11}
+      rotation: {x: -0.09769615, y: -0.6129167, z: 0.085043505, w: 0.7794589}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1}
     - name: leg_right_low_end
       parentName: leg_right_low
       position: {x: -0, y: 0.002469765, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 0.026010849, y: -0.004867226, z: -0.03869733, w: 0.99890053}
       scale: {x: 1, y: 1, z: 1}
     - name: neck
       parentName: spine
       position: {x: -6.4028427e-12, y: 0.008118438, z: 6.4028427e-12}
-      rotation: {x: 0.016372247, y: 0.9891632, z: -0.00816983, w: -0.14567547}
+      rotation: {x: 0.016372247, y: 0.9891632, z: -0.008169829, w: -0.14567551}
       scale: {x: 1, y: 1, z: 0.99999994}
     - name: head
       parentName: neck
@@ -413,51 +533,46 @@ ModelImporter:
       position: {x: -0, y: 0.0057129925, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: shoulder_left
-      parentName: spine
-      position: {x: -6.4028427e-12, y: 0.008118438, z: 6.4028427e-12}
-      rotation: {x: 0.47289848, y: 0.52449566, z: 0.5762656, w: -0.41132638}
-      scale: {x: 1, y: 1, z: 1}
-    - name: arm_left
-      parentName: shoulder_left
-      position: {x: 1.8626451e-11, y: 0.0068858257, z: 2.2817402e-10}
-      rotation: {x: 0.037548024, y: -0.0070722387, z: 0.065251276, w: 0.9971371}
-      scale: {x: 0.99999994, y: 0.9999999, z: 0.9999999}
-    - name: arm_low_left
-      parentName: arm_left
-      position: {x: -8.381903e-11, y: 0.006859177, z: -0.0000000011653174}
-      rotation: {x: -0.013375395, y: -0.0070941574, z: -0.013568667, w: 0.99979335}
-      scale: {x: 0.99999994, y: 1, z: 1}
-    - name: arm_low_left_end
-      parentName: arm_low_left
-      position: {x: -0, y: 0.006324258, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
     - name: shoulder_right
       parentName: spine
       position: {x: -6.4028427e-12, y: 0.008118438, z: 6.4028427e-12}
-      rotation: {x: -0.54158103, y: 0.47858167, z: 0.45869973, w: 0.5169566}
-      scale: {x: 1, y: 1, z: 0.99999994}
+      rotation: {x: -0.42936033, y: 0.57687736, z: 0.56449133, w: 0.40523052}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
     - name: arm_right
       parentName: shoulder_right
-      position: {x: 4.4819898e-11, y: 0.007077728, z: -5.279798e-10}
-      rotation: {x: -0.01790688, y: -0.00072710554, z: 0.004360236, w: 0.9998299}
-      scale: {x: 0.9999999, y: 0.99999994, z: 0.99999994}
+      position: {x: 6.868504e-10, y: 0.0070777284, z: 0.0000000010104849}
+      rotation: {x: -0.06486886, y: -0.5313992, z: -0.06968067, w: 0.841755}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
     - name: arm_low_right
       parentName: arm_right
-      position: {x: 6.5808546e-11, y: 0.0062135854, z: -1.2281816e-10}
-      rotation: {x: 0.018285349, y: 0.0007190571, z: -0.021174297, w: 0.99960834}
-      scale: {x: 0.9999999, y: 0.99999994, z: 0.99999994}
+      position: {x: -2.9802322e-10, y: 0.0062135872, z: 0}
+      rotation: {x: -0.037699036, y: -0.14903216, z: -0.01822096, w: 0.98794544}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
     - name: arm_low_right_end
       parentName: arm_low_right
       position: {x: -0, y: 0.0065848874, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: PenguinWithArm
-      parentName: PenguinWithArmature(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-      scale: {x: 100, y: 100, z: 100}
+    - name: shoulder_left
+      parentName: spine
+      position: {x: -6.4028427e-12, y: 0.008118438, z: 6.4028427e-12}
+      rotation: {x: -0.5840878, y: -0.4225855, z: -0.46428868, w: 0.51448905}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: arm_left
+      parentName: shoulder_left
+      position: {x: 9.3132255e-12, y: 0.0068858257, z: 2.6542693e-10}
+      rotation: {x: 0.07078212, y: 0.24897572, z: -0.04949338, w: 0.96465087}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: arm_low_left
+      parentName: arm_left
+      position: {x: -1.4901161e-10, y: 0.006859177, z: 0}
+      rotation: {x: -0.008990917, y: 0.078848176, z: 0.004661193, w: 0.99683523}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: arm_low_left_end
+      parentName: arm_low_left
+      position: {x: -0, y: 0.006324258, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
