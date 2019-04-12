@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     // SOUNDS
 
     [SerializeField] private AudioPlayer AudioPlayer;
+    [SerializeField] private Animator animator;
 
     // END SOUNDS
     private Player player;
@@ -95,6 +96,8 @@ public class PlayerController : MonoBehaviour
         cooldownTimerBigBomb = 0f;
 
         bomb.Owner = player;
+        animator.SetTrigger("bombCharged");
+        animator.SetBool("action",true);
 
         // audio
         //AudioPlayer.PlaySound(0);
@@ -102,6 +105,7 @@ public class PlayerController : MonoBehaviour
     
     private void OnThrowingBombDown()
     {
+        animator.SetTrigger("bombCharged");
         // audio
     }
     private void OnThrowingBombUp()
@@ -119,6 +123,7 @@ public class PlayerController : MonoBehaviour
         bomb.Owner = player;
 
         // audio
+        animator.SetBool("action",true);
         AudioPlayer.PlaySound(1);
     }
 
@@ -148,10 +153,19 @@ public class PlayerController : MonoBehaviour
             {
                 rb.MovePosition(nextPos);
                 moving = true;
+                animator.SetBool("isWalking", true);
             }
-            else moving = false;
+            else 
+            {
+                moving = false;
+                animator.SetBool("isWalking", false);
+            }
         }
-        else moving = false;
+        else 
+        {
+            moving = false;
+            animator.SetBool("isWalking", false);
+        }
     }
 
     private bool CanMove(Vector3 nextPos)

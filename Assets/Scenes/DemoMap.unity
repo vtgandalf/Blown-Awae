@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43975598, g: 0.4881817, b: 0.5683977, a: 1}
+  m_IndirectSpecularColor: {r: 0.43975618, g: 0.488182, b: 0.56839836, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -647,7 +647,7 @@ PrefabInstance:
     - target: {fileID: 4716707662321848376, guid: 6402b3302e9f75c43b5f2aa4c2ba0a52,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4716707662321848376, guid: 6402b3302e9f75c43b5f2aa4c2ba0a52,
         type: 3}
@@ -679,7 +679,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerPrefab
       value: 
-      objectReference: {fileID: 4957500279746898554, guid: 8c13c2eb566be42458cb4dfa1ba607e1,
+      objectReference: {fileID: 1701758937085965652, guid: 1fc2caadff3061040aefa3cc9e69b5ca,
         type: 3}
     - target: {fileID: 4716707662321848383, guid: 6402b3302e9f75c43b5f2aa4c2ba0a52,
         type: 3}
@@ -1590,7 +1590,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 70, y: -30, z: 0}
 --- !u!4 &952016106 stripped
 Transform:
@@ -1690,7 +1690,7 @@ RectTransform:
   m_Children:
   - {fileID: 1241801612}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3484,6 +3484,32 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 205135413}
     m_Modifications:
+    - target: {fileID: 7282822446719121978, guid: 0a76a8cf646f5124090bfd29e271718a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1905350677}
+    - target: {fileID: 7282822446719121959, guid: 0a76a8cf646f5124090bfd29e271718a,
+        type: 3}
+      propertyPath: playerColor.r
+      value: 0.8301887
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282822446719121959, guid: 0a76a8cf646f5124090bfd29e271718a,
+        type: 3}
+      propertyPath: playerColor.g
+      value: 0.14293262
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282822446719121959, guid: 0a76a8cf646f5124090bfd29e271718a,
+        type: 3}
+      propertyPath: playerColor.b
+      value: 0.07440368
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282822446719121959, guid: 0a76a8cf646f5124090bfd29e271718a,
+        type: 3}
+      propertyPath: input
+      value: 
+      objectReference: {fileID: 11400000, guid: aab601077a7493c40b4dfdc5e9ac163b,
+        type: 2}
     - target: {fileID: 4253223978175885002, guid: f90b91343cda16248b3f873704366de9,
         type: 3}
       propertyPath: m_Name
@@ -3549,32 +3575,6 @@ PrefabInstance:
       propertyPath: spawner
       value: 
       objectReference: {fileID: 11400000, guid: 8d5913f37e6aa534897b15c89fbc6ecf,
-        type: 2}
-    - target: {fileID: 7282822446719121978, guid: 0a76a8cf646f5124090bfd29e271718a,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1905350677}
-    - target: {fileID: 7282822446719121959, guid: 0a76a8cf646f5124090bfd29e271718a,
-        type: 3}
-      propertyPath: playerColor.r
-      value: 0.8301887
-      objectReference: {fileID: 0}
-    - target: {fileID: 7282822446719121959, guid: 0a76a8cf646f5124090bfd29e271718a,
-        type: 3}
-      propertyPath: playerColor.g
-      value: 0.14293262
-      objectReference: {fileID: 0}
-    - target: {fileID: 7282822446719121959, guid: 0a76a8cf646f5124090bfd29e271718a,
-        type: 3}
-      propertyPath: playerColor.b
-      value: 0.07440368
-      objectReference: {fileID: 0}
-    - target: {fileID: 7282822446719121959, guid: 0a76a8cf646f5124090bfd29e271718a,
-        type: 3}
-      propertyPath: input
-      value: 
-      objectReference: {fileID: 11400000, guid: aab601077a7493c40b4dfdc5e9ac163b,
         type: 2}
     - target: {fileID: 5799140852631141202, guid: 0a76a8cf646f5124090bfd29e271718a,
         type: 3}
@@ -4026,7 +4026,7 @@ PrefabInstance:
     - target: {fileID: 8636193493276788022, guid: a1854b4b313344447ba0ce1ceb9040bb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8636193493276788022, guid: a1854b4b313344447ba0ce1ceb9040bb,
         type: 3}
