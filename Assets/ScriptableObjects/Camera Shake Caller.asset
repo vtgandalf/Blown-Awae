@@ -9,14 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b013d67c6e0fe364db0c12f4ea646900, type: 3}
-  m_Name: BigBomb
+  m_Script: {fileID: 11500000, guid: d43a22bc5460c4645ab82c6fec55d9a4, type: 3}
+  m_Name: Camera Shake Caller
   m_EditorClassIdentifier: 
-  lifetime: 3
-  radius: 4
-  force: 15
-  upForce: 0.5
-  shakeDuration: 0.3
-  shakeMagnitude: 0.3
-  explosionEffect: {fileID: 7610260110356494282, guid: b1de3a047d7ebf14caf0c9b6c7c52768,
-    type: 3}

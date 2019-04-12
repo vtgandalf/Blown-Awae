@@ -10,5 +10,8 @@ public class BombData : ScriptableObject
     public float force;
     public float upForce;
 
+    public float shakeDuration;
+    public float shakeMagnitude;
+
     public GameObject explosionEffect;
 }

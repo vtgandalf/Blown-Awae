@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 533db3ca51cc64a45958ff3b65603982, type: 2}
   bombEffect: {fileID: 0}
+  CameraShake: {fileID: 11400000, guid: 99de9710d9ebe1648ad8742f67d277f3, type: 2}
   AudioPlayer: {fileID: 4067773114933625484}
 --- !u!114 &5300319524214549974
 MonoBehaviour:
@@ -288,14 +289,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 550339753658957922}
     m_Modifications:
-    - target: {fileID: 100002, guid: 21543d2b66928224f8a9536ff3811682, type: 3}
-      propertyPath: m_Name
-      value: Projector
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 21543d2b66928224f8a9536ff3811682, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 21543d2b66928224f8a9536ff3811682, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -351,6 +344,14 @@ PrefabInstance:
     - target: {fileID: 400002, guid: 21543d2b66928224f8a9536ff3811682, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.6666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 21543d2b66928224f8a9536ff3811682, type: 3}
+      propertyPath: m_Name
+      value: Projector
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 21543d2b66928224f8a9536ff3811682, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 11900000, guid: 21543d2b66928224f8a9536ff3811682, type: 3}
       propertyPath: m_Material

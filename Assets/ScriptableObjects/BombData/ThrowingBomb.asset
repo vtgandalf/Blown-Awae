@@ -16,5 +16,7 @@ MonoBehaviour:
   radius: 2
   force: 10
   upForce: 0.3
+  shakeDuration: 0.3
+  shakeMagnitude: 0.1
   explosionEffect: {fileID: 7610260110356494282, guid: 804d7b2d690284c43b43c6c32313242a,
     type: 3}
