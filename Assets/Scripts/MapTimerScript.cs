@@ -18,7 +18,11 @@ public class MapTimerScript : MonoBehaviour
     void Update()
     {
         if (timeLeft > 0) timeLeft -= Time.deltaTime;
-        else text.transform.gameObject.SetActive(false);
+        else 
+        {
+            text.text = null;
+            this.gameObject.GetComponent<MapTimerScript>().enabled = false;
+        }
         text.text = "COUNTER:" + Mathf.Round(timeLeft);
         if(timeLeft < 0)
         {

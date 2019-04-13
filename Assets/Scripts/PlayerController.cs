@@ -96,8 +96,8 @@ public class PlayerController : MonoBehaviour
         cooldownTimerBigBomb = 0f;
 
         bomb.Owner = player;
-        animator.SetTrigger("bombCharged");
-        animator.SetBool("action",true);
+        //animator.SetTrigger("bombCharged");
+        //animator.SetBool("action",true);
 
         // audio
         //AudioPlayer.PlaySound(0);
@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour
     private void OnThrowingBombDown()
     {
         animator.SetTrigger("bombCharged");
+        animator.SetBool("action", false);
         // audio
     }
     private void OnThrowingBombUp()

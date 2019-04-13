@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapScript : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class MapScript : MonoBehaviour
     private float timer = 0f;
     public float layersDelay = 1f;
     public int layersToBeLeftAtTheEnd = 1;
+    public Text text;
     // Start is called before the first frame update
     void Awake()
     {
@@ -42,11 +44,12 @@ public class MapScript : MonoBehaviour
 
     public void DropNextLayer()
     {
-        if (layers.Count > 1)
+        if (layers.Count > layersToBeLeftAtTheEnd)
         {
             if(!layers[0].ShouldShrink) layers[0].ShouldShrink = true;
             if(layers[0].AllTilesHaveFallen) 
             {
+                text.text = "COUNTER:" + Mathf.Round(layersDelay-timer);
                 if(timer > layersDelay)
                 {
                     layers.RemoveAt(0);
@@ -54,9 +57,11 @@ public class MapScript : MonoBehaviour
                 }   
                 timer += Time.deltaTime;
             }
+            else text.text = " ";
         }
         else 
         {
+            text.text = " ";
             ShouldShrink = false;
         }
     }

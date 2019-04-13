@@ -35,7 +35,7 @@ public class Tile : MonoBehaviour
         rb.isKinematic = false;
         falling = true;
         SetUsable(false);
-        StartCoroutine(LateDeactivate(5));        
+        StartCoroutine(LateDeactivate(3));        
     }
 
     public void ChangeColor(Color tileColor)

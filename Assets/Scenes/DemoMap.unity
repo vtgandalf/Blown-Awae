@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43975618, g: 0.488182, b: 0.56839836, a: 1}
+  m_IndirectSpecularColor: {r: 0.43975598, g: 0.4881817, b: 0.5683977, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3483,32 +3483,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 205135413}
     m_Modifications:
-    - target: {fileID: 7282822446719121978, guid: 0a76a8cf646f5124090bfd29e271718a,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1905350677}
-    - target: {fileID: 7282822446719121959, guid: 0a76a8cf646f5124090bfd29e271718a,
-        type: 3}
-      propertyPath: playerColor.r
-      value: 0.8301887
-      objectReference: {fileID: 0}
-    - target: {fileID: 7282822446719121959, guid: 0a76a8cf646f5124090bfd29e271718a,
-        type: 3}
-      propertyPath: playerColor.g
-      value: 0.14293262
-      objectReference: {fileID: 0}
-    - target: {fileID: 7282822446719121959, guid: 0a76a8cf646f5124090bfd29e271718a,
-        type: 3}
-      propertyPath: playerColor.b
-      value: 0.07440368
-      objectReference: {fileID: 0}
-    - target: {fileID: 7282822446719121959, guid: 0a76a8cf646f5124090bfd29e271718a,
-        type: 3}
-      propertyPath: input
-      value: 
-      objectReference: {fileID: 11400000, guid: aab601077a7493c40b4dfdc5e9ac163b,
-        type: 2}
     - target: {fileID: 4253223978175885002, guid: f90b91343cda16248b3f873704366de9,
         type: 3}
       propertyPath: m_Name
@@ -3574,6 +3548,32 @@ PrefabInstance:
       propertyPath: spawner
       value: 
       objectReference: {fileID: 11400000, guid: 8d5913f37e6aa534897b15c89fbc6ecf,
+        type: 2}
+    - target: {fileID: 7282822446719121978, guid: 0a76a8cf646f5124090bfd29e271718a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1905350677}
+    - target: {fileID: 7282822446719121959, guid: 0a76a8cf646f5124090bfd29e271718a,
+        type: 3}
+      propertyPath: playerColor.r
+      value: 0.8301887
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282822446719121959, guid: 0a76a8cf646f5124090bfd29e271718a,
+        type: 3}
+      propertyPath: playerColor.g
+      value: 0.14293262
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282822446719121959, guid: 0a76a8cf646f5124090bfd29e271718a,
+        type: 3}
+      propertyPath: playerColor.b
+      value: 0.07440368
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282822446719121959, guid: 0a76a8cf646f5124090bfd29e271718a,
+        type: 3}
+      propertyPath: input
+      value: 
+      objectReference: {fileID: 11400000, guid: aab601077a7493c40b4dfdc5e9ac163b,
         type: 2}
     - target: {fileID: 5799140852631141202, guid: 0a76a8cf646f5124090bfd29e271718a,
         type: 3}
@@ -4085,6 +4085,11 @@ PrefabInstance:
       propertyPath: layersDelay
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8636193493276788023, guid: a1854b4b313344447ba0ce1ceb9040bb,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 1241801613}
     - target: {fileID: 407869119958762982, guid: a1854b4b313344447ba0ce1ceb9040bb,
         type: 3}
       propertyPath: m_LocalPosition.z

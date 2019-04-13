@@ -183,7 +183,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 1
-    motionNodeName: 
+    motionNodeName: <Root Transform>
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
@@ -221,11 +221,53 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      bodyMask: 01000000010000000000000000000000000000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask: []
-      maskType: 3
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/spine
+        weight: 1
+      - path: Armature/spine/leg_left
+        weight: 1
+      - path: Armature/spine/leg_left/leg_left_low
+        weight: 1
+      - path: Armature/spine/leg_left/leg_left_low/leg_left_low_end
+        weight: 1
+      - path: Armature/spine/leg_right
+        weight: 1
+      - path: Armature/spine/leg_right/leg_right_low
+        weight: 1
+      - path: Armature/spine/leg_right/leg_right_low/leg_right_low_end
+        weight: 1
+      - path: Armature/spine/neck
+        weight: 1
+      - path: Armature/spine/neck/head
+        weight: 1
+      - path: Armature/spine/neck/head/head_end
+        weight: 0
+      - path: Armature/spine/shoulder_right
+        weight: 1
+      - path: Armature/spine/shoulder_right/arm_right
+        weight: 1
+      - path: Armature/spine/shoulder_right/arm_right/arm_low_right
+        weight: 1
+      - path: Armature/spine/shoulder_right/arm_right/arm_low_right/arm_low_right_end
+        weight: 1
+      - path: Armature/spine/shoulder_left
+        weight: 1
+      - path: Armature/spine/shoulder_left/arm_left
+        weight: 1
+      - path: Armature/spine/shoulder_left/arm_left/arm_low_left
+        weight: 1
+      - path: Armature/spine/shoulder_left/arm_left/arm_low_left/arm_low_left_end
+        weight: 1
+      - path: PenguinWithArm
+        weight: 0
+      maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
@@ -252,8 +294,50 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask: []
-      maskType: 3
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/spine
+        weight: 1
+      - path: Armature/spine/leg_left
+        weight: 1
+      - path: Armature/spine/leg_left/leg_left_low
+        weight: 1
+      - path: Armature/spine/leg_left/leg_left_low/leg_left_low_end
+        weight: 1
+      - path: Armature/spine/leg_right
+        weight: 1
+      - path: Armature/spine/leg_right/leg_right_low
+        weight: 1
+      - path: Armature/spine/leg_right/leg_right_low/leg_right_low_end
+        weight: 1
+      - path: Armature/spine/neck
+        weight: 1
+      - path: Armature/spine/neck/head
+        weight: 1
+      - path: Armature/spine/neck/head/head_end
+        weight: 0
+      - path: Armature/spine/shoulder_right
+        weight: 1
+      - path: Armature/spine/shoulder_right/arm_right
+        weight: 1
+      - path: Armature/spine/shoulder_right/arm_right/arm_low_right
+        weight: 1
+      - path: Armature/spine/shoulder_right/arm_right/arm_low_right/arm_low_right_end
+        weight: 1
+      - path: Armature/spine/shoulder_left
+        weight: 1
+      - path: Armature/spine/shoulder_left/arm_left
+        weight: 1
+      - path: Armature/spine/shoulder_left/arm_left/arm_low_left
+        weight: 1
+      - path: Armature/spine/shoulder_left/arm_left/arm_low_left/arm_low_left_end
+        weight: 1
+      - path: PenguinWithArm
+        weight: 0
+      maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
@@ -277,11 +361,53 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      bodyMask: 01000000010000000000000000000000000000000100000001000000010000000100000000000000000000000000000000000000
       curves: []
       events: []
-      transformMask: []
-      maskType: 3
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/spine
+        weight: 1
+      - path: Armature/spine/leg_left
+        weight: 1
+      - path: Armature/spine/leg_left/leg_left_low
+        weight: 1
+      - path: Armature/spine/leg_left/leg_left_low/leg_left_low_end
+        weight: 1
+      - path: Armature/spine/leg_right
+        weight: 1
+      - path: Armature/spine/leg_right/leg_right_low
+        weight: 1
+      - path: Armature/spine/leg_right/leg_right_low/leg_right_low_end
+        weight: 1
+      - path: Armature/spine/neck
+        weight: 1
+      - path: Armature/spine/neck/head
+        weight: 1
+      - path: Armature/spine/neck/head/head_end
+        weight: 0
+      - path: Armature/spine/shoulder_right
+        weight: 1
+      - path: Armature/spine/shoulder_right/arm_right
+        weight: 1
+      - path: Armature/spine/shoulder_right/arm_right/arm_low_right
+        weight: 1
+      - path: Armature/spine/shoulder_right/arm_right/arm_low_right/arm_low_right_end
+        weight: 1
+      - path: Armature/spine/shoulder_left
+        weight: 1
+      - path: Armature/spine/shoulder_left/arm_left
+        weight: 1
+      - path: Armature/spine/shoulder_left/arm_left/arm_low_left
+        weight: 1
+      - path: Armature/spine/shoulder_left/arm_left/arm_low_left/arm_low_left_end
+        weight: 1
+      - path: PenguinWithArm
+        weight: 0
+      maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     isReadable: 1
