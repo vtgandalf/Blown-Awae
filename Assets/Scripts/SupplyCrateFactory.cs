@@ -17,8 +17,8 @@ public class SupplyCrateFactory : MonoBehaviour
     
     void FixedUpdate()
     {
-        if (!spawning)
-            return;
+        //if (!spawning)
+        //    return;
 
         spawnTimer -= Time.fixedDeltaTime;
         if (spawnTimer <= 0)

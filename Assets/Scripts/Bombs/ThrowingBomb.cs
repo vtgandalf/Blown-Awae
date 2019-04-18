@@ -32,7 +32,7 @@ public class ThrowingBomb : Bomb
     private void OnTriggerEnter(Collider other)
     {
         BombInteractable bi = other.gameObject.GetComponent<BombInteractable>();
-        if (bi != null && bi.type != InteractableType.GROUND && bi.type != InteractableType.BOMB)
+        if (bi != null && bi.type != InteractableType.GROUND)
         {
             if (bi.GetComponent<Player>() != Owner)
                 Explode();
